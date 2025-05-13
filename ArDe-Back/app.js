@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
 
 
 //Middlewares
-app.use(cors(/*{origin: 'http://localhost:PUERTO FRONTEND' }*/)); //Evita errores de CORS policy
+app.use(cors({origin: 'http://localhost:5173' })); //Evita errores de CORS policy
 app.use(express.json()); //Parsea info a json auto
 
 

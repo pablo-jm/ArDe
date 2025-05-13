@@ -5,7 +5,7 @@ import './Header.css';
 const Header = () => {
 
   const handleLoginClick = () => {
-    // Llamar a SweetAlert2 para mostrar el formulario de login
+
     Swal.fire({
       title: 'Iniciar Sesión',
       html: `
@@ -23,7 +23,7 @@ const Header = () => {
       confirmButtonText: 'Iniciar sesión',
       confirmButtonColor: '#1a73e8',
       focusConfirm: false,
-      backdrop: 'rgba(0, 0, 0, 0.7)', // Oscurecer el fondo
+      backdrop: 'rgba(0, 0, 0, 0.7)',
       customClass: {
         container: 'my-swal-container',
         popup: 'my-swal-popup',
@@ -100,7 +100,7 @@ const Header = () => {
   return (
     <header className="header">
       <div className="logo">
-        <Link to="/home">
+        <Link to="/">
           <img src="https://res.cloudinary.com/df9wuyrbg/image/upload/v1747152138/Logo_ARDE_pab1ao.svg" alt="ARDE logo" className="logo-img" />
         </Link>
       </div>
