@@ -7,7 +7,6 @@
   width: 100%;
   top: 0;
   left: 0;
-  margin-top: 10px;
   background-color: black;
   z-index: 1000;
   box-sizing: border-box;
@@ -63,6 +62,49 @@
   color: black;
 }
 
+
+/*SweetAlert LogIn*/
+.my-swal-popup {
+  background-color: #EEEEEE;
+  color: #000000;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.my-swal-container {
+  font-family: 'Manrope';
+}
+
+.my-swal-title {
+  color: #000000;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.my-swal-button {
+  background-color: #000000;
+  color: white;
+  border-radius: 25px;
+  padding: 6px 15px;
+  border: none;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+
+.swal2-input {
+  padding: 6px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+
+
+
+
+
 /* Mobile */
 @media (max-width: 768px) {
   .header {
@@ -78,7 +120,7 @@
   .nav-links {
     order: 3;
     width: 100%;
-    margin-top: 15px;
+    margin-top: 10px;
     justify-content: flex-start;
   }
 
