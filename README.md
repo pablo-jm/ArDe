@@ -22,6 +22,7 @@ Before you start, ensure you have the following installed:
 
    ```bash
    cd ArDe
+   cd ArDe-front
    npm install
    
 3. **Run the application**
@@ -29,6 +30,14 @@ Before you start, ensure you have the following installed:
 
    ```bash
    npm run dev
+
+4. **Run the application server (back)**
+   Start the development server using the following command
+
+   ```bash
+   cd ..
+   cd ArDe-back
+   node app.js
 
 ---
 
