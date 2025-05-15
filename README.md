@@ -48,6 +48,5 @@ Before you start, ensure you have the following installed:
 - react
 - react-bootstrap
 - react-dom
-- react-icons
 - react-router-dom
 - sweetalert2
