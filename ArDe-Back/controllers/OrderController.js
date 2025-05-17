@@ -21,17 +21,28 @@ export const getOrderById = async(req, res) => {
     }
 }
 
-//createOrder
+
+//CreateOrder
 export const createOrder = async(req, res) => {
-    try{
-        await OrderModel.create(req.body);
-        res.json({message: 'Order created succesfully'});
-    }catch(error){
-        res.json({message: error.message});
+    try {
+        const { user_id, work_id, ship_address, phone_number, price } = req.body;
+
+        await OrderModel.create({
+            user_id,
+            work_id,
+            ship_address,
+            phone_number,
+            price
+        });
+
+        res.json({ message: 'Order created successfully' });
+    } catch (error) {
+        res.json({ message: error.message });
     }
 }
 
-//updateOrder ¿?
+
+//updateOrder
 export const updateOrder = async(req,res) =>{
 	try{ 
 			await OrderModel.update(req.body, { where:{id:req.params.id}})

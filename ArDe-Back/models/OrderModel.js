@@ -31,9 +31,9 @@ const OrderModel = sequelize.define('Order', {
     defaultValue: DataTypes.NOW
   },
   state: {
-    type: DataTypes.ENUM('Pendiente', 'Enviado', 'Entregado', 'Cancelado'),
+    type: DataTypes.ENUM('Realizado', 'Cancelado'),
     allowNull: false,
-    defaultValue: 'Pendiente'
+    defaultValue: 'Realizado'
   },
   ship_address: {
     type: DataTypes.STRING(255),
