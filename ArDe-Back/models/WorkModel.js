@@ -16,11 +16,11 @@ const WorkModel = sequelize.define('Work', {
   },
   description: {
     type: DataTypes.TEXT,
-    allowNull: true // Puede ser opcional
+    allowNull: true
   },
   image_url: {
     type: DataTypes.STRING(255),
-    allowNull: true,
+    allowNull: false,
     validate: {
       isUrl: true
     }
