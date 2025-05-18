@@ -44,7 +44,8 @@ Before you start, ensure you have the following installed:
    ## 📚 **Libraries**
 
 - @cloudinary/react
-- bootstrap
+- jsonwebtoken
+- bcrypt
 - react
 - react-bootstrap
 - react-dom

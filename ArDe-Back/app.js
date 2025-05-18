@@ -5,11 +5,12 @@ import userRouter from "./routes/user.router.js";
 import workRouter from "./routes/work.router.js";
 import orderRouter from "./routes/order.router.js";
 import eventRouter from "./routes/event.router.js";
+import authRoutes from "./routes/auth.router.js";
 
 
 const app = express();
 
-//Prueba raiz
+//Raiz
 app.get('/', (req, res) => {
     res.send('Hola API');
 });
@@ -19,7 +20,7 @@ app.get('/', (req, res) => {
 app.use(cors({origin: 'http://localhost:5173' })); //Evita errores de CORS policy
 app.use(express.json()); //Parsea info a json auto
 
-
+app.use('/auth', authRoutes);
 app.use('/users', userRouter);
 app.use('/works', workRouter);
 app.use('/orders', orderRouter);

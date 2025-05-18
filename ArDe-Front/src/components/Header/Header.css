@@ -1,4 +1,5 @@
 .header {
+  font-family: 'Manrope', sans-serif;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -48,40 +49,39 @@
   color: #f1f1f1;
 }
 
-.login-button a {
+.user-session {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-email {
+  cursor: pointer;
+  font-size: 14px;
   color: white;
-  text-decoration: none;
-  font-size: 18px;
-  border: 2px solid white;
-  padding: 8px 16px;
-  transition: background-color 0.3s;
-}
-
-.login-button a:hover {
-  background-color: #ffffff;
-  color: black;
 }
 
 
-/*SweetAlert LogIn*/
-.my-swal-popup {
+
+.sweet-popup {
   background-color: #EEEEEE;
   color: #000000;
   border-radius: 10px;
   padding: 20px;
 }
 
-.my-swal-container {
+.sweet-container {
   font-family: 'Manrope';
 }
 
-.my-swal-title {
+.sweet-title {
   color: #000000;
+  font-family: 'Manrope', sans-serif;
   font-size: 18px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
-.my-swal-button {
+.sweet-confirm {
   background-color: #000000;
   color: white;
   border-radius: 25px;
@@ -91,14 +91,33 @@
   font-size: 14px;
 }
 
-
-.swal2-input {
+.sweet-input {
   padding: 6px;
   border-radius: 5px;
   border: 1px solid #ccc;
   font-size: 12px;
   margin-bottom: 10px;
 }
+
+.logout-button{
+  background-color: #000000;
+  color: white;
+  border-radius: 25px;
+  padding: 6px 15px;
+  border: none;
+  font-weight: bold;
+  font-size: 14px;
+  margin-top: 15px;
+}
+
+.logout-button:hover{
+  background-color: #d91c1c;
+}
+
+.sweet-perfil{
+  font-family: 'Archer', sans-serif;
+}
+
 
 
 

@@ -14,6 +14,10 @@ export const getAllUsers = async(req, res) => {
 //getUserByEmail
 export const getUserByEmail = async(req, res) => {
     try{
+        if (req.user.email !== req.params.email) {
+        return res.status(403).json({ message: 'Denied access.' });
+        }
+        
         const user = await UserModel.findOne({where:{email: req.params.email}});
         res.json(user);
     }catch(error){
@@ -33,7 +37,10 @@ export const createUser = async(req, res) => {
 
 //updateUser
 export const updateUser = async(req,res) =>{
-	try{ 
+	try{
+        if (req.user.email !== req.params.email) {
+        return res.status(403).json({ message: 'Denied access.' });
+        }
 			await UserModel.update(req.body, { where:{email:req.params.email}})
 			res.json({message: "User updated successfully!"})
 		}
@@ -45,6 +52,9 @@ export const updateUser = async(req,res) =>{
 //deleteUser
 export const deleteUser = async (req, res) => {
 	try{
+        if (req.user.email !== req.params.email) {
+        return res.status(403).json({ message: 'Denied access.' });
+        }
 			await UserModel.destroy({ where:{email:req.params.email}})
 			res.json({message: "User deleted successfully!"})
 	} catch{

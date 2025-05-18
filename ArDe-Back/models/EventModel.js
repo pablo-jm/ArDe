@@ -16,7 +16,7 @@ const EventModel = sequelize.define('Event', {
   },
   description: {
     type: DataTypes.TEXT,
-    allowNull: true, // descripción opcional
+    allowNull: true,
     validate: {
       len: [3, 150]
     }

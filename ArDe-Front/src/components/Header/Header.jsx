@@ -1,101 +1,102 @@
 import { Link } from 'react-router-dom';
+import { useState, useEffect} from 'react';
 import Swal from 'sweetalert2';
+import AuthButton from '../AuthButton/AuthButton.jsx'
 import './Header.css';
 
 const Header = () => {
 
-  const handleLoginClick = () => {
+  const [user, setUser] = useState(null);
+
+    useEffect(() => {
+      const storedUser = localStorage.getItem('user');
+      if (storedUser) {
+        try {
+          setUser(JSON.parse(storedUser));
+        } catch {
+          setUser(null);
+        }
+      }
+    }, []);
+
+    const handleLogout = () => {
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      window.location.reload();
+    };
+
+  const showProfileModal = () => {
+
+    const storedUser = localStorage.getItem('user');
+    if (!storedUser) return;
+
+    const user = JSON.parse(storedUser);
 
     Swal.fire({
-      title: 'Iniciar Sesión',
+      title: 'Perfil',
       html: `
         <div style="text-align: center;">
-          <img src="https://res.cloudinary.com/df9wuyrbg/image/upload/v1747153355/Logo_ARDE_black_mzmcpa.svg" alt="ARDE logo" style="max-width: 80px; margin-bottom: 10px;">
-          <form id="login-form">
-            <input type="email" id="email" class="swal2-input" placeholder="Email" style="width: 80%; padding: 6px; margin-bottom: 8px; border-radius: 8px; border: 1px solid #ccc; font-size: 12px;" required>
-            <input type="password" id="password" class="swal2-input" placeholder="Contraseña" style="width: 80%; padding: 6px; margin-bottom: 12px; border-radius: 8px; border: 1px solid #ccc; font-size: 12px;" required>
+          <form id="profile-form">
+            <input type="text" id="full-name" class="sweet-input" placeholder="Nombre completo" value="${user.fullName || ''}" style="width: 80%; padding: 6px; margin-bottom: 8px;">
+            <input type="email" id="profile-email" class="sweet-input" placeholder="Email" value="${user.email}" style="width: 80%; padding: 6px; margin-bottom: 8px;" disabled>
           </form>
-          <div style="margin-top: 15px;">
-            <a href="javascript:void(0);" style="color: #1a73e8; text-decoration: none; font-size: 12px;" id="register-link">También puedes crear una cuenta aquí</a>
-          </div>
+          <button type="button" id="logout-button" class="logout-button">Cerrar sesión</button
         </div>
       `,
-      confirmButtonText: 'Iniciar sesión',
-      confirmButtonColor: '#1a73e8',
+      confirmButtonText: 'Guardar cambios',
       focusConfirm: false,
-      backdrop: 'rgba(0, 0, 0, 0.7)',
       customClass: {
-        container: 'my-swal-container',
-        popup: 'my-swal-popup',
-        title: 'my-swal-title',
-        confirmButton: 'my-swal-button'
+        container: 'sweet-container',
+        popup: 'sweet-popup',
+        title: 'sweet-perfil',
+        confirmButton: 'sweet-confirm'
+      },
+      didOpen: () => {
+        const logoutButton = Swal.getPopup().querySelector('#logout-button');
+        logoutButton.addEventListener('click', handleLogout);
       },
 
-      preConfirm: () => {
+      preConfirm: async () => {
+        const fullName = Swal.getPopup().querySelector('#full-name').value;
 
-        const username = Swal.getPopup().querySelector('#email').value;
-        const password = Swal.getPopup().querySelector('#password').value;
-        
-        if (!username || !password) {
-          Swal.showValidationMessage('Por favor, ingresa usuario y contraseña');
+        if (!fullName) {
+          Swal.showValidationMessage('El nombre no puede estar vacío.');
           return false;
         }
 
-        return { username, password };
+        try {
+          const token = localStorage.getItem('token');
+
+          const response = await fetch(`http://localhost:3000/users/${user.email}`, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({ fullName })
+          });
+
+          const data = await response.json();
+
+          if (!response.ok) {
+            Swal.showValidationMessage(data.message || 'Error al actualizar perfil');
+            return false;
+          }
+
+          const updatedUser = { ...user, fullName };
+          localStorage.setItem('user', JSON.stringify(updatedUser));
+
+          Swal.fire('¡Perfil actualizado!', '', 'success').then(() => {
+            window.location.reload();
+          });
+
+        } catch (error) {
+          Swal.showValidationMessage(error.message || 'Error de red o del servidor.');
+          return false;
+        }
       }
     });
-
-    
-    document.getElementById('register-link').addEventListener('click', () => {
-
-    Swal.close();
-
-      
-      Swal.fire({
-        title: 'Crear una Cuenta',
-        html: `
-          <div style="text-align: center;">
-            <img src="https://res.cloudinary.com/df9wuyrbg/image/upload/v1747153355/Logo_ARDE_black_mzmcpa.svg" alt="ARDE logo" style="max-width: 80px; margin-bottom: 10px;">
-            <form id="register-form">
-              <input type="text" id="full-name" class="swal2-input" placeholder="Nombre Completo" style="width: 80%; padding: 6px; margin-bottom: 8px; border-radius: 8px; border: 1px solid #ccc; font-size: 12px;" required>
-              <input type="text" id="email" class="swal2-input" placeholder="Email" style="width: 80%; padding: 6px; margin-bottom: 8px; border-radius: 8px; border: 1px solid #ccc; font-size: 12px;" required>
-              <input type="password" id="new-password" class="swal2-input" placeholder="Contraseña" style="width: 80%; padding: 6px; margin-bottom: 12px; border-radius: 8px; border: 1px solid #ccc; font-size: 12px;" required>
-              <input type="password" id="confirm-password" class="swal2-input" placeholder="Confirmar Contraseña" style="width: 80%; padding: 6px; margin-bottom: 12px; border-radius: 8px; border: 1px solid #ccc; font-size: 12px;" required>
-            </form>
-          </div>
-        `,
-        confirmButtonText: 'Crear cuenta',
-        confirmButtonColor: '#1a73e8',
-        focusConfirm: false,
-        backdrop: 'rgba(0, 0, 0, 0.7)',
-        customClass: {
-          container: 'my-swal-container',
-          popup: 'my-swal-popup',
-          title: 'my-swal-title',
-          confirmButton: 'my-swal-button'
-        },
-
-        preConfirm: () => {
-
-          const newUsername = Swal.getPopup().querySelector('#new-username').value;
-          const newPassword = Swal.getPopup().querySelector('#new-password').value;
-          const confirmPassword = Swal.getPopup().querySelector('#confirm-password').value;
-          
-          if (!newUsername || !newPassword || !confirmPassword) {
-            Swal.showValidationMessage('Por favor ingresa todos los campos');
-            return false;
-          }
-
-          if (newPassword !== confirmPassword) {
-            Swal.showValidationMessage('Las contraseñas no coinciden');
-            return false;
-          }
-
-          return { newUsername, newPassword };
-        }
-      });
-    });
-  };
+};
 
   return (
     <header className="header">
@@ -108,7 +109,15 @@ const Header = () => {
         <ul>
           <li><Link to="/shop">Tienda</Link></li>
           <li><a href="">Contacto</a></li>
-          <li><a href="javascript:void(0)" onClick={handleLoginClick}>Iniciar Sesión</a></li>
+          <li>
+            {user ? (
+              <div className="user-session">
+                <span className="user-email" onClick={showProfileModal}><i className="bi bi-person"></i>{user.fullName}</span>
+              </div>
+            ) : (
+              <AuthButton />
+            )}
+          </li>
         </ul>
       </nav>
     </header>

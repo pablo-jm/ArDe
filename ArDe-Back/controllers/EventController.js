@@ -34,7 +34,7 @@ export const createEvent = async(req, res) => {
 //updateEvent
 export const updateEvent = async(req,res) =>{
 	try{ 
-			await OrderModel.update(req.body, { where:{title:req.params.title}})
+			await EventModel.update(req.body, { where:{title:req.params.title}})
 			res.json({message: "Event updated successfully!"})
 		}
 	catch(error){
