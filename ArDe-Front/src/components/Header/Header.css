@@ -103,14 +103,29 @@
   background-color: #000000;
   color: white;
   border-radius: 25px;
-  padding: 6px 15px;
   border: none;
+  padding: 6px 15px;
   font-weight: bold;
   font-size: 14px;
   margin-top: 15px;
 }
 
 .logout-button:hover{
+  background-color: #d91c1c;
+}
+
+.sweet-button{
+  outline: none !important;
+  box-shadow: none !important;
+  border: none;
+}
+
+.sweet-button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.sweet-button:hover{
   background-color: #d91c1c;
 }
 

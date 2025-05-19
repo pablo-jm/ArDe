@@ -25,6 +25,49 @@ const Header = () => {
       window.location.reload();
     };
 
+    const handleDeleteAccount = async () => {
+      const confirm = await Swal.fire({
+        title: '¿Eliminar cuenta?',
+        text: 'Esta acción eliminará permanentemente tu cuenta.',
+        icon: 'warning',
+        confirmButtonText: 'Eliminar',
+        customClass: {
+          container: 'sweet-container',
+          popup: 'sweet-popup',
+          title: 'sweet-title',
+          confirmButton: 'sweet-button'
+        },
+      });
+
+      if (confirm.isConfirmed) {
+        try {
+          const token = localStorage.getItem('token');
+          const user = JSON.parse(localStorage.getItem('user'));
+
+          const response = await fetch(`http://localhost:3000/users/${user.email}`, {
+            method: 'DELETE',
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          });
+
+          const data = await response.json();
+
+          if (response.ok) {
+            Swal.fire('Cuenta eliminada', '', 'success').then(() => {
+              localStorage.clear();
+              window.location.href = '/';
+            });
+          } else {
+            Swal.fire('Error', data.message || 'No se pudo eliminar la cuenta.', 'error');
+          }
+        } catch (err) {
+          Swal.fire('Error del servidor', err.message, 'error');
+        }
+      }
+    };
+
+
   const showProfileModal = () => {
 
     const storedUser = localStorage.getItem('user');
@@ -39,8 +82,12 @@ const Header = () => {
           <form id="profile-form">
             <input type="text" id="full-name" class="sweet-input" placeholder="Nombre completo" value="${user.fullName || ''}" style="width: 80%; padding: 6px; margin-bottom: 8px;">
             <input type="email" id="profile-email" class="sweet-input" placeholder="Email" value="${user.email}" style="width: 80%; padding: 6px; margin-bottom: 8px;" disabled>
+            <input type="password" id="new-password" class="sweet-input" placeholder="Nueva contraseña" style="width: 80%; padding: 6px; margin-bottom: 8px;">
           </form>
-          <button type="button" id="logout-button" class="logout-button">Cerrar sesión</button
+            <button type="button" id="logout-button" class="logout-button">Cerrar sesión</button
+          <div style="margin-top: 15px;">
+            <a href="#" id="delete-link" style="color: #1a73e8; text-decoration: none; font-size: 12px;">Puedes eliminar tu cuenta aquí</a>
+          </div>
         </div>
       `,
       confirmButtonText: 'Guardar cambios',
@@ -54,10 +101,14 @@ const Header = () => {
       didOpen: () => {
         const logoutButton = Swal.getPopup().querySelector('#logout-button');
         logoutButton.addEventListener('click', handleLogout);
+
+        const deleteButton = Swal.getPopup().querySelector('#delete-link');
+        deleteButton.addEventListener('click', handleDeleteAccount);
       },
 
       preConfirm: async () => {
         const fullName = Swal.getPopup().querySelector('#full-name').value;
+        const newPassword = Swal.getPopup().querySelector('#new-password').value;
 
         if (!fullName) {
           Swal.showValidationMessage('El nombre no puede estar vacío.');
@@ -67,13 +118,21 @@ const Header = () => {
         try {
           const token = localStorage.getItem('token');
 
+          const body = { fullName };
+
+          if (newPassword.trim() !== '') {
+              body.password = newPassword;
+          }
+
+          console.log('📦 Enviando al backend:', body);
+
           const response = await fetch(`http://localhost:3000/users/${user.email}`, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json',
               Authorization: `Bearer ${token}`,
             },
-            body: JSON.stringify({ fullName })
+            body: JSON.stringify(body)
           });
 
           const data = await response.json();
