@@ -36,7 +36,7 @@ const Header = () => {
       if (confirm.isConfirmed) {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
-        window.location.reload();
+        window.location.href = '/';
       };
   }
 
