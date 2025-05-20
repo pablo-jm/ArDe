@@ -100,7 +100,7 @@ const Header = () => {
             <input type="email" id="profile-email" class="sweet-input" placeholder="Email" value="${user.email}" style="width: 80%; padding: 6px; margin-bottom: 8px;" disabled>
             <input type="password" id="new-password" class="sweet-input" placeholder="Nueva contraseña" style="width: 80%; padding: 6px; margin-bottom: 8px;">
           </form>
-            <button type="button" id="logout-button" class="logout-button">Cerrar sesión</button
+            <button type="button" id="logout-button" class="logout-button">Cerrar sesión</button>
           <div style="margin-top: 15px;">
             <a href="#" id="delete-link" style="color: #1a73e8; text-decoration: none; font-size: 12px;">Puedes eliminar tu cuenta aquí</a>
           </div>
@@ -158,7 +158,7 @@ const Header = () => {
           }
 
           const updatedUser = { ...user, fullName };
-          
+
           localStorage.setItem('token', data.token);
           localStorage.setItem('user', JSON.stringify(updatedUser));
 
@@ -174,17 +174,22 @@ const Header = () => {
     });
 };
 
+  const logoLink = user?.role === 'admin' ? '/admin/dashboard' : '/';
+
+
   return (
     <header className="header">
       <div className="logo">
-        <Link to="/">
+        <Link to={logoLink}>
           <img src="https://res.cloudinary.com/df9wuyrbg/image/upload/v1747152138/Logo_ARDE_pab1ao.svg" alt="ARDE logo" className="logo-img" />
         </Link>
       </div>
       <nav className="nav-links">
         <ul>
           <li><Link to="/shop">Tienda</Link></li>
-          <li><a href="">Contacto</a></li>
+          {location.pathname !== '/admin/dashboard' && (
+            <li><a href="">Contacto</a></li>
+          )}
           <li>
             {user ? (
               <div className="user-session">

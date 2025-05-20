@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import './AuthButton.css';
 
@@ -89,6 +90,8 @@ const AuthButton = () => {
 };
 
 
+  const Navigate = useNavigate();
+
   const handleLoginClick = () => {
     Swal.fire({
       title: 'Iniciar Sesión',
@@ -150,13 +153,20 @@ const AuthButton = () => {
             localStorage.setItem('token', data.token);
             localStorage.setItem('user', JSON.stringify(data.user));
 
+            if (data.user.role === 'admin') {
+              Swal.fire('¡Bienvenido, Admin!', '', 'success').then(() => {
+                Navigate('/admin/dashboard');
+              });
+
+            } else {
+
             Swal.fire('¡Bienvenido!', 'Inicio de sesión exitoso', 'success').then(() => {
               window.location.reload();
             });
 
             return data;
 
-        } catch (error) {
+        }} catch (error) {
           Swal.showValidationMessage(error.message || 'Error de red o servidor');
           return false;
         }

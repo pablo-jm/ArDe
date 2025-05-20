@@ -46,7 +46,7 @@ export const login = async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    const user = await UserModel.findOne({ where: { email }, attributes: ['id', 'email', 'full_name'] });
+    const user = await UserModel.findOne({ where: { email }, attributes: ['id', 'email', 'full_name', 'password', 'role'] });
     if (!user) return res.status(401).json({ message: 'Usuario no encontrado.' });
 
     const isPasswordValid = await bcrypt.compare(password, user.password);
@@ -61,11 +61,16 @@ export const login = async (req, res) => {
     res.json({
       message: 'Inicio de sesión exitoso.',
       token,
-      user: { id: user.id, email: user.email, fullName: user.full_name}
+      user: { 
+        id: user.id, 
+        email: user.email, 
+        fullName: user.full_name, 
+        role: user.role}
     });
     
 
   } catch (error) {
+    console.error('Error en login:', error);
     res.status(500).json({ message: error.message });
   }
 };
