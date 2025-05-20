@@ -12,7 +12,7 @@ const AuthButton = () => {
         <form id="register-form">
           <input type="text" id="full-name" class="sweet-auth-input" placeholder="Nombre Completo" style="width: 80%; padding: 6px; margin-bottom: 8px;">
           <input type="text" id="email" class="sweet-auth-input" placeholder="Email" style="width: 80%; padding: 6px; margin-bottom: 8px;">
-          <input type="password" id="new-password" class="sweet-auth-input" placeholder="Contraseña" style="width: 80%; padding: 6px; margin-bottom: 12px;">
+          <input type="password" id="password" class="sweet-auth-input" placeholder="Contraseña" style="width: 80%; padding: 6px; margin-bottom: 12px;">
           <input type="password" id="confirm-password" class="sweet-auth-input" placeholder="Confirmar Contraseña" style="width: 80%; padding: 6px; margin-bottom: 12px;">
         </form>
       </div>
@@ -33,7 +33,7 @@ const AuthButton = () => {
     preConfirm: async () => {
       const email = Swal.getPopup().querySelector('#email').value;
       const fullName = Swal.getPopup().querySelector('#full-name').value;
-      const password = Swal.getPopup().querySelector('#new-password').value;
+      const password = Swal.getPopup().querySelector('#password').value;
       const confirmPassword = Swal.getPopup().querySelector('#confirm-password').value;
 
       if (!email || !password || !confirmPassword) {
@@ -147,8 +147,15 @@ const AuthButton = () => {
               return false;
             }
 
-            Swal.fire('¡Bienvenido!', 'Inicio de sesión exitoso', 'success');
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('user', JSON.stringify(data.user));
+
+            Swal.fire('¡Bienvenido!', 'Inicio de sesión exitoso', 'success').then(() => {
+              window.location.reload();
+            });
+
             return data;
+
         } catch (error) {
           Swal.showValidationMessage(error.message || 'Error de red o servidor');
           return false;

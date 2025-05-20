@@ -19,17 +19,33 @@ const Header = () => {
       }
     }, []);
 
-    const handleLogout = () => {
-      localStorage.removeItem('token');
-      localStorage.removeItem('user');
-      window.location.reload();
-    };
+    const handleLogout = async () => {
+      const confirm = await Swal.fire({
+        title: '¿Cerrar sesión?',
+        icon: 'warning',
+        confirmButtonText: 'Cerrar sesión',
+        backdrop: 'rgba(0, 0, 0, 0.7)',
+        customClass: {
+          container: 'sweet-container',
+          popup: 'sweet-popup',
+          title: 'sweet-title',
+          confirmButton: 'sweet-button'
+        },
+      });
+
+      if (confirm.isConfirmed) {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        window.location.reload();
+      };
+  }
 
     const handleDeleteAccount = async () => {
       const confirm = await Swal.fire({
         title: '¿Eliminar cuenta?',
         text: 'Esta acción eliminará permanentemente tu cuenta.',
         icon: 'warning',
+        backdrop: 'rgba(0, 0, 0, 0.7)',
         confirmButtonText: 'Eliminar',
         customClass: {
           container: 'sweet-container',
@@ -92,6 +108,7 @@ const Header = () => {
       `,
       confirmButtonText: 'Guardar cambios',
       focusConfirm: false,
+      backdrop: 'rgba(0, 0, 0, 0.7)',
       customClass: {
         container: 'sweet-container',
         popup: 'sweet-popup',
@@ -124,8 +141,6 @@ const Header = () => {
               body.password = newPassword;
           }
 
-          console.log('📦 Enviando al backend:', body);
-
           const response = await fetch(`http://localhost:3000/users/${user.email}`, {
             method: 'PUT',
             headers: {
@@ -143,6 +158,8 @@ const Header = () => {
           }
 
           const updatedUser = { ...user, fullName };
+          
+          localStorage.setItem('token', data.token);
           localStorage.setItem('user', JSON.stringify(updatedUser));
 
           Swal.fire('¡Perfil actualizado!', '', 'success').then(() => {
