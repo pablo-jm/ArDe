@@ -51,3 +51,5 @@ Before you start, ensure you have the following installed:
 - react-router-dom
 - sweetalert2
 - vitest
+- jest
+- babel-jest
