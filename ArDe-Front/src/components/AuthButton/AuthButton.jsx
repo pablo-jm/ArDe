@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import './AuthButton.css';
 
+
 const AuthButton = () => {
 
   const showRegisterModal = () => {
@@ -90,6 +91,8 @@ const AuthButton = () => {
 };
 
 
+
+
   const Navigate = useNavigate();
 
   const handleLoginClick = () => {
@@ -154,7 +157,7 @@ const AuthButton = () => {
             localStorage.setItem('user', JSON.stringify(data.user));
 
             if (data.user.role === 'admin') {
-              Swal.fire('¡Bienvenido, Admin!', '', 'success').then(() => {
+              Swal.fire('¡Bienvenid@, Admin!', '', 'success').then(() => {
                 Navigate('/admin/dashboard');
               });
 
@@ -175,7 +178,7 @@ const AuthButton = () => {
   };
 
   return (
-    <a href="#" className="auth-button" onClick={(e) => { e.preventDefault(); handleLoginClick(); }}>
+    <a href="#" className="auth-button" role='button' onClick={(e) => { e.preventDefault(); handleLoginClick(); }}>
       Iniciar Sesión
     </a>
   );
