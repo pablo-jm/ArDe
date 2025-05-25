@@ -50,5 +50,3 @@ Before you start, ensure you have the following installed:
 - react-dom
 - react-router-dom
 - sweetalert2
-- jest
-- react testing library
