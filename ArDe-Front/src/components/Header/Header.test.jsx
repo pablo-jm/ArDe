@@ -11,7 +11,7 @@ describe("Header", () => {
     localStorage.clear();
   });
 
-  it("Muestra el logo correctamente", () => {
+  it("Show logo correctly", () => {
     render(<Header />, { wrapper: Wrapper });
 
     const logo = screen.getByAltText('ARDE logo');
@@ -19,7 +19,7 @@ describe("Header", () => {
     expect(logo).toHaveAttribute('src', 'https://res.cloudinary.com/df9wuyrbg/image/upload/v1747152138/Logo_ARDE_pab1ao.svg');
   });
 
-  it("Muestra los enlaces de navegación esperados sin usuario logueado", () => {
+  it("Show waited navigation links without Login", () => {
     render(<Header />, { wrapper: Wrapper });
 
     expect(screen.getByText('Tienda')).toBeInTheDocument();

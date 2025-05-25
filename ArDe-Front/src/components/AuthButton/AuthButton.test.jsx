@@ -16,7 +16,7 @@ describe('AuthButton', () => {
     vi.clearAllMocks();
   });
 
-  it('HandleLoginClick es llamado al hacer clic', () => {
+  it('HandleLoginClick called clicking', () => {
     render(
       <BrowserRouter>
         <AuthButton />
@@ -29,7 +29,7 @@ describe('AuthButton', () => {
     expect(Swal.fire).toHaveBeenCalled();
   });
 
-  it('Menu Login contiene el formulario con campos de email y password', () => {
+  it('Login menu form has email and password fields', () => {
     render(
       <BrowserRouter>
         <AuthButton />
@@ -49,7 +49,7 @@ describe('AuthButton', () => {
 
 
 
-  it('ShowRegisterModal es llamado al hacer clic en crear cuenta', () => {
+  it('ShowRegisterModal called clicking on "Crear cuenta"', () => {
     Swal.fire.mockImplementationOnce((config) => {
       const registerLink = document.createElement('a');
       registerLink.id = 'register-link';
