@@ -98,15 +98,21 @@ export const updateUser = async (req, res) => {
 
 //deleteUser
 export const deleteUser = async (req, res) => {
-	try{
-        if (req.user.email !== req.params.email) {
-        return res.status(403).json({ message: 'Denied access.' });
-        }
-			await UserModel.destroy({ where:{email:req.params.email}})
-			if (deleted === 0) {
-                return res.status(404).json({ message: 'User not found or already deleted.' });
-            }
-	} catch(error){
-			res.json({message: error.message})
-	}
-}
+  try {
+
+    if (req.user.email !== req.params.email) {
+      return res.status(403).json({ message: 'Denied access.' });
+    }
+
+
+    const deleted = await UserModel.destroy({ where: { email: req.params.email } });
+
+    if (deleted === 0) {
+      return res.status(404).json({ message: 'User not found or already deleted.' });
+    }
+
+    return res.status(200).json({ message: 'User deleted successfully.' });
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
