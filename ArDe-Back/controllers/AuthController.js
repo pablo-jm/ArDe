@@ -6,8 +6,39 @@ import jwt from 'jsonwebtoken';
 const SECRET_KEY = 'clave_secreta';
 
 
+
+const validateRegisterData = ({ fullName, email, password }) => {
+  const errors = [];
+
+  if (!fullName || fullName.length < 3 || fullName.length > 100) {
+    errors.push('El nombre completo debe tener entre 3 y 100 caracteres.');
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!email || !emailRegex.test(email)) {
+    errors.push('El correo electrónico no es válido.');
+  }
+
+  if (!password || password.length < 8 || password.length > 100) {
+    errors.push('La contraseña debe tener más de 8 caracteres.');
+  }
+
+  const hasUpperCase = /[A-Z]/.test(password);
+  if (!hasUpperCase) {
+    errors.push('La contraseña debe contener al menos una letra mayúscula.');
+  }
+
+  return errors;
+};
+
+
 export const register = async (req, res) => {
   const { email, password, fullName } = req.body;
+
+  const validationErrors = validateRegisterData({ fullName, email, password });
+    if (validationErrors.length > 0) {
+      return res.status(400).json({ message: validationErrors.join(' ') });
+    }
 
   try {
     
@@ -21,7 +52,7 @@ export const register = async (req, res) => {
     const newUser = await UserModel.create({ full_name: fullName, email, password: hashedPassword});
 
     const token = jwt.sign(
-      { id: newUser.id, email: newUser.email },
+      { id: newUser.id, email: newUser.email, role: newUser.role },
       SECRET_KEY,
       { expiresIn: '2h' }
     );
@@ -53,7 +84,7 @@ export const login = async (req, res) => {
     if (!isPasswordValid) return res.status(401).json({ message: 'Contraseña incorrecta.' });
 
     const token = jwt.sign(
-      { id: user.id, email: user.email },
+      { id: user.id, email: user.email, role: newUser.role },
       SECRET_KEY,
       { expiresIn: '2h' }
     );

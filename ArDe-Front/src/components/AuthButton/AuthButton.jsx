@@ -5,6 +5,33 @@ import './AuthButton.css';
 
 const AuthButton = () => {
 
+  const validateRegisterData = ({ fullName, email, password, confirmPassword }) => {
+
+    if (!fullName || fullName.length < 3 || fullName.length > 100) {
+      return 'El nombre completo debe tener entre 3 y 100 caracteres.';
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRegex.test(email)) {
+      return 'El correo electrónico no es válido.';
+    }
+
+    if (!password || password.length < 8 || password.length > 100) {
+      return 'La contraseña debe tener más de 8 caracteres.';
+    }
+
+    const hasUpperCase = /[A-Z]/.test(password);
+    if (!hasUpperCase) {
+      return 'La contraseña debe contener al menos una letra mayúscula.';
+    }
+
+    if (password !== confirmPassword) {
+      return 'Las contraseñas no coinciden.';
+    }
+
+    return null;
+  };
+
   const showRegisterModal = () => {
   Swal.fire({
     title: 'Crear una Cuenta',
@@ -38,13 +65,9 @@ const AuthButton = () => {
       const password = Swal.getPopup().querySelector('#password').value;
       const confirmPassword = Swal.getPopup().querySelector('#confirm-password').value;
 
-      if (!email || !password || !confirmPassword) {
-        Swal.showValidationMessage('Por favor ingresa todos los campos.');
-        return false;
-      }
-
-      if (password !== confirmPassword) {
-        Swal.showValidationMessage('Las contraseñas no coinciden.');
+      const errorMessage = validateRegisterData({ fullName, email, password, confirmPassword });
+      if (errorMessage) {
+        Swal.showValidationMessage(errorMessage);
         return false;
       }
 

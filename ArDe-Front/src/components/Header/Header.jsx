@@ -132,6 +132,16 @@ const Header = () => {
           return false;
         }
 
+        if (!newPassword || newPassword.length < 8 || newPassword.length > 100) {
+          Swal.showValidationMessage('La contraseña debe tener al menos 8 caracteres.');
+        }
+
+        const hasUpperCase = /[A-Z]/.test(newPassword);
+
+        if (!hasUpperCase) {
+          Swal.showValidationMessage('La contraseña debe contener al menos una letra mayúscula.');
+        }
+
         try {
           const token = localStorage.getItem('token');
 
