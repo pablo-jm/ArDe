@@ -53,3 +53,12 @@ Before you start, ensure you have the following installed:
 - vitest
 - jest
 - babel-jest
+
+---
+
+   ## **Testing**
+   
+Test AuthController & UserController (Back & Front)
+
+![Captura de pantalla 2025-05-26 181932](https://github.com/user-attachments/assets/386821d8-61fb-4755-abc3-974bd784f3e4)
+![Captura de pantalla 2025-05-26 182108](https://github.com/user-attachments/assets/6e154116-f144-46d9-9c45-60b53e53225b)
