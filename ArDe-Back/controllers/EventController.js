@@ -1,7 +1,6 @@
 import EventModel from '../models/EventModel.js'
 
 
-//getAllEvents
 export const getAllEvents = async(req, res) => {
     try{
         const events = await EventModel.findAll();
@@ -11,7 +10,7 @@ export const getAllEvents = async(req, res) => {
     }
 }
 
-//getEventByTitle
+
 export const getEventByTitle = async(req, res) => {
     try{
         const event = await EventModel.findOne({where:{title: req.params.title}});
@@ -21,7 +20,7 @@ export const getEventByTitle = async(req, res) => {
     }
 }
 
-//createEvent
+
 export const createEvent = async(req, res) => {
     try{
         await EventModel.create(req.body);
@@ -31,7 +30,7 @@ export const createEvent = async(req, res) => {
     }
 }
 
-//updateEvent
+
 export const updateEvent = async(req,res) =>{
 	try{ 
 			await EventModel.update(req.body, { where:{title:req.params.title}})
@@ -42,7 +41,7 @@ export const updateEvent = async(req,res) =>{
 		}
 	}
 
-//deleteEvent
+
 export const deleteEvent = async (req, res) => {
 	try{
 			await EventModel.destroy({ where:{title:req.params.title}})

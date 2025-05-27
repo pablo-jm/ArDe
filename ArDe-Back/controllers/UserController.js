@@ -1,7 +1,7 @@
 import UserModel from '../models/UserModel.js'
 import bcrypt from 'bcrypt';
 
-//getAllUsers
+
 export const getAllUsers = async(req, res) => {
     try{
         const users = await UserModel.findAll();
@@ -11,7 +11,7 @@ export const getAllUsers = async(req, res) => {
     }
 }
 
-//getUserByEmail
+
 export const getUserByEmail = async(req, res) => {
     try{
         if (req.user.email !== req.params.email) {
@@ -25,7 +25,7 @@ export const getUserByEmail = async(req, res) => {
     }
 }
 
-//createUser
+
 export const createUser = async(req, res) => {
     try{
         await UserModel.create(req.body);
@@ -35,7 +35,7 @@ export const createUser = async(req, res) => {
     }
 }
 
-//updateUser
+
 export const updateUser = async (req, res) => {
   try {
 
@@ -96,7 +96,7 @@ export const updateUser = async (req, res) => {
 };
 
 
-//deleteUser
+
 export const deleteUser = async (req, res) => {
   try {
 

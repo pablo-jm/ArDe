@@ -1,7 +1,7 @@
 import OrderModel from '../models/OrderModel.js'
 
 
-//getAllOrders
+
 export const getAllOrders = async(req, res) => {
     try{
         const orders = await OrderModel.findAll();
@@ -11,7 +11,7 @@ export const getAllOrders = async(req, res) => {
     }
 }
 
-//getOrderById
+
 export const getOrderById = async(req, res) => {
     try{
         const order = await OrderModel.findOne({where:{id: req.params.id}});
@@ -22,7 +22,7 @@ export const getOrderById = async(req, res) => {
 }
 
 
-//CreateOrder
+
 export const createOrder = async(req, res) => {
     try {
         const { user_id, work_id, ship_address, phone_number, price } = req.body;
@@ -42,7 +42,7 @@ export const createOrder = async(req, res) => {
 }
 
 
-//updateOrder
+
 export const updateOrder = async(req,res) =>{
 	try{ 
 			await OrderModel.update(req.body, { where:{id:req.params.id}})
@@ -53,7 +53,7 @@ export const updateOrder = async(req,res) =>{
 		}
 	}
 
-//deleteOrder ¿?
+
 export const deleteOrder = async (req, res) => {
 	try{
 			await OrderModel.destroy({ where:{id:req.params.id}})
