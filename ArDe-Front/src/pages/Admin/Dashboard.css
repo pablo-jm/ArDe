@@ -1,0 +1,132 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  font-family: 'Manrope', sans-serif;
+}
+
+.father-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background-image: url('https://res.cloudinary.com/df9wuyrbg/image/upload/v1748332975/landing_kj1c3v.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 0;
+}
+
+.content-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 100px;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+}
+
+.admin-panel {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  text-align: center;
+
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 400px;
+}
+
+.admin-panel nav {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #000000;
+}
+
+.card-button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 8px;
+  background-color: black;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.card-button:hover {
+  background-color: #333;
+}
+
+
+/*SweetAlerts*/
+.sweet-popup {
+  background-color: #EEEEEE;
+  color: #000000;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.sweet-container {
+  font-family: 'Manrope', sans-serif;
+}
+
+.sweet-title {
+  color: #000000;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.sweet-button {
+  background-color: #000000;
+  color: white;
+  border-radius: 25px;
+  padding: 6px 15px;
+  border: none;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.sweet-auth-input {
+  padding: 6px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+
+
+@media (max-width: 600px) {
+  .admin-panel {
+    padding: 30px 20px;
+    max-width: 90%;
+  }
+
+  .admin-panel nav {
+    font-size: 20px;
+  }
+
+  .card-button {
+    font-size: 15px;
+  }
+}

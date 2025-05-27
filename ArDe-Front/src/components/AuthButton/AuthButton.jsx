@@ -114,8 +114,6 @@ const AuthButton = () => {
 };
 
 
-
-
   const Navigate = useNavigate();
 
   const handleLoginClick = () => {

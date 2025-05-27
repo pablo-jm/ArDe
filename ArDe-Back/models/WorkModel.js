@@ -11,12 +11,15 @@ const WorkModel = sequelize.define('Work', {
     type: DataTypes.STRING(150),
     allowNull: false,
     validate: {
-      len: [3, 150]
+      len: [3, 100]
     }
   },
   description: {
     type: DataTypes.TEXT,
-    allowNull: true
+      allowNull: false,
+      validate: {
+      len: [10, 150]
+    }
   },
   image_url: {
     type: DataTypes.STRING(255),
@@ -29,7 +32,7 @@ const WorkModel = sequelize.define('Work', {
     type: DataTypes.DECIMAL(10, 2),
     allowNull: false,
     validate: {
-      min: 0
+      min: 1
     }
   },
   create_date: {
@@ -39,7 +42,7 @@ const WorkModel = sequelize.define('Work', {
   },
   dimensions: {
     type: DataTypes.STRING(100),
-    allowNull: true
+    allowNull: false
   },
   state: {
     type: DataTypes.ENUM('selling', 'sold'),

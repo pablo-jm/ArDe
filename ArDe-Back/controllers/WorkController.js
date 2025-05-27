@@ -23,13 +23,32 @@ export const getWorkByTitle = async(req, res) => {
 
 //createWork
 export const createWork = async(req, res) => {
+    const { title, description, image_url, price, dimensions } = req.body;
+
+    if (!title || !image_url || !price || !description || !dimensions) {
+        return res.status(400).json({ message: 'Los campos: título, descripción, imagen, precio y dimensiones son obligatorios.' });
+    }
+
     try{
-        await WorkModel.create(req.body);
-        res.json({message: 'Work created succesfully'});
+        const existingWork = await WorkModel.findOne({ where: { title } });
+        if (existingWork) {
+            return res.status(400).json({ message: 'La obra ya fue creada.' });
+        }
+
+        const newWork = await WorkModel.create({ title, description, image_url, price, dimensions });
+        if(!newWork || !newWork.id){
+            return res.status(500).json({ message: 'Error al crear la obra, inténtelo de nuevo.' });
+        }
+
+        res.status(201).json({
+            message: 'Obra creada exitosamente.',
+            work: newWork
+        });
     }catch(error){
         res.json({message: error.message});
     }
 }
+
 
 //updateWork
 export const updateWork = async(req,res) =>{
@@ -41,6 +60,7 @@ export const updateWork = async(req,res) =>{
 			res.json({message: error.message})
 		}
 	}
+
 
 //deleteWork
 export const deleteWork = async (req, res) => {
