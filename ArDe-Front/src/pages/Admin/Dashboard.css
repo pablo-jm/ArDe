@@ -7,7 +7,7 @@ html, body {
   font-family: 'Manrope', sans-serif;
 }
 
-.father-container {
+.dashboard-father-container {
   width: 100vw;
   height: 100vh;
   position: relative;
@@ -18,7 +18,7 @@ html, body {
   background-repeat: no-repeat;
 }
 
-.background-overlay {
+.dashboard-background-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -28,7 +28,7 @@ html, body {
   z-index: 0;
 }
 
-.content-wrapper {
+.dashboard-content-wrapper {
   width: 100%;
   height: 100%;
   display: flex;
@@ -40,7 +40,7 @@ html, body {
   z-index: 1;
 }
 
-.admin-panel {
+.dashboard-admin-panel {
   background-color: #fff;
   padding: 40px;
   border-radius: 12px;
@@ -51,7 +51,7 @@ html, body {
   max-width: 400px;
 }
 
-.admin-panel nav {
+.dashboard-admin-panel nav {
   font-size: 28px;
   font-weight: 700;
   margin-bottom: 25px;
