@@ -107,6 +107,7 @@ html, body {
 }
 
 .sweet-auth-input {
+  font-family: 'Manrope', sans-serif;
   padding: 6px;
   border-radius: 5px;
   border: 1px solid #ccc;
