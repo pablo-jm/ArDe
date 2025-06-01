@@ -1,7 +1,8 @@
 import Header from "../../components/Header/Header"
 import Footer from "../../components/Footer/Footer"
-import "./Home.css"
 import EventsSection from "../../components/EventsSection/EventsSection"
+import ContactSection from "../../components/ContactSection/ContactSection"
+import "./Home.css"
 
 const Home = () => {
   return (
@@ -25,6 +26,9 @@ const Home = () => {
           <p>Una mirada artística que transforma lo cotidiano en lienzos llenos de vida, textura y color.</p>
         </div>
         <EventsSection />
+        <div id="home-contact-section">
+          <ContactSection />
+        </div>
       </main>
       <Footer />
     </div>

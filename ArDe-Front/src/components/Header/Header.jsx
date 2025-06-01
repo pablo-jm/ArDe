@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect} from 'react';
 import Swal from 'sweetalert2';
 import AuthButton from '../AuthButton/AuthButton.jsx'
+import { useLocation } from 'react-router-dom';
 import './Header.css';
 
 const Header = () => {
@@ -18,6 +19,7 @@ const Header = () => {
         }
       }
     }, []);
+    
 
     const handleLogout = async () => {
       const confirm = await Swal.fire({
@@ -186,6 +188,10 @@ const Header = () => {
 
   const logoLink = user?.role === 'admin' ? '/admin/dashboard' : '/';
 
+  const location = useLocation();
+
+  const contactLink = location.pathname === '/shop' ? '#shop-contact-section' : '#home-contact-section';
+
 
   return (
     <header className="header">
@@ -198,12 +204,12 @@ const Header = () => {
         <ul>
           <li><Link to="/shop">Tienda</Link></li>
           {location.pathname !== '/admin/dashboard' && (
-            <li><a href="">Contacto</a></li>
+            <li><a href={contactLink}>Contacto</a></li>
           )}
           <li>
             {user ? (
               <div className="user-session">
-                <span className="user-email" onClick={showProfileModal}><i className="bi bi-person"></i>{user.fullName}</span>
+                <span className="user-name" onClick={showProfileModal}><i className="bi bi-person"></i>{user.fullName}</span>
               </div>
             ) : (
               <AuthButton />

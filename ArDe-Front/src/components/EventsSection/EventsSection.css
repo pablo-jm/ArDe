@@ -19,6 +19,11 @@
   pointer-events: none;
 }
 
+.events-section:hover::before {
+  background: rgba(0, 0, 0, 0.5) !important;
+  transition: ease-in-out 0.1s;
+}
+
 .events-content {
   position: relative;
   z-index: 2;

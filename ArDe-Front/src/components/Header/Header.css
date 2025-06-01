@@ -52,12 +52,13 @@
 .user-session {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
 }
 
-.user-email {
+.user-name {
   cursor: pointer;
-  font-size: 14px;
+  font-size: 18px;
   color: white;
 }
 
@@ -132,82 +133,81 @@
 }
 
 @media (max-width: 600px) {
-  body {
-    overflow-x: hidden;
-  }
-
   .header {
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    padding: 20px 15px;
-    height: auto;
+    padding: 10px 20px;
+    height: 80px;
   }
 
   .header .logo {
-    width: 100%;
+    margin: 0;
     display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
+    align-items: center;
+    flex-shrink: 0;
   }
 
   .header .logo img {
-    max-height: 50px;
-    width: auto;
+    max-height: 40px;
   }
 
   .nav-links {
-    width: 100%;
-    justify-content: center;
-    margin: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-grow: 1;
   }
 
   .nav-links ul {
+    display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 0;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 10px;
     margin: 0;
+    padding: 0;
   }
 
   .nav-links li {
-    margin: 5px 10px;
+    margin: 0;
   }
 
   .nav-links a {
-    font-size: 14px;
-    padding: 6px;
+    font-size: 13px;
+    padding: 4px 6px;
     white-space: nowrap;
   }
 
   .user-session {
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
   }
 
-  .user-email {
+  .user-name {
     font-size: 13px;
-    text-align: center;
+    white-space: nowrap;
   }
 }
 
 @media (max-width: 400px) {
-  .nav-links ul {
-    flex-direction: row;
-    align-items: center;
-  }
-
-  .nav-links li {
-    width: 100%;
-    text-align: center;
-  }
-
-  .nav-links a {
-    font-size: 13px;
+  .header {
+    padding: 10px 10px;
+    height: 70px;
   }
 
   .header .logo img {
-    max-height: 45px;
+    max-height: 35px;
+  }
+
+  .nav-links a {
+    font-size: 12px;
+  }
+
+  .user-name {
+    font-size: 12px;
   }
 }
+

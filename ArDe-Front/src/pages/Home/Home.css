@@ -1,9 +1,6 @@
 html,
 body,
-#root,
-#app,
-div[id="root"],
-div[id="app"] {
+#root{
   margin: 0 !important;
   padding: 0 !important;
   width: 100% !important;
@@ -13,6 +10,7 @@ div[id="app"] {
   min-height: 100% !important;
   overflow-x: hidden !important;
   box-sizing: border-box !important;
+  scroll-behavior: smooth;
 }
 
 
@@ -74,7 +72,7 @@ div[id="app"] {
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  background: rgba(0, 0, 0, 0.3) !important;
+  background: rgba(0, 0, 0, 0.2) !important;
   pointer-events: none !important;
   z-index: 1 !important;
 }
@@ -135,6 +133,11 @@ div[id="app"] {
   pointer-events: none !important;
 }
 
+.home-description-section:hover::before {
+  background: rgba(0, 0, 0, 0.5) !important;
+  transition: ease-in-out 0.1s;
+}
+
 .home-description-section p {
   position: relative !important;
   z-index: 2 !important;
@@ -142,6 +145,10 @@ div[id="app"] {
   line-height: 1.6 !important;
   margin: 0 !important;
   max-width: 800px !important;
+}
+
+#home-contact-section {
+  scroll-margin-top: 130px;
 }
 
 
