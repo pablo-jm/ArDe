@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { showRegisterModal } from '../../utils/RegisterUser';
+import { showRegisterModal } from '../../services/RegisterUser';
 import Swal from 'sweetalert2';
 import './AuthButton.css';
 
