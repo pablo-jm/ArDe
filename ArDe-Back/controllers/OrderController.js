@@ -1,4 +1,5 @@
 import OrderModel from '../models/OrderModel.js'
+import WorkModel from '../models/WorkModel.js'
 
 
 
@@ -12,14 +13,21 @@ export const getAllOrders = async(req, res) => {
 }
 
 
-export const getOrderById = async(req, res) => {
-    try{
-        const order = await OrderModel.findOne({where:{id: req.params.id}});
-        res.json(order);
-    }catch(error){
-        res.json({message: error.message});
-    }
-}
+export const getOrdersByLoggedUser = async (req, res) => {
+  try {
+    const userId = req.user.id;
+
+    const orders = await OrderModel.findAll({
+      where: { user_id: userId, state: 'Paid' },
+      include: [{ model: WorkModel, as: 'work', attributes: ['title'] }]
+    });
+
+    res.json(orders);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 
 
 

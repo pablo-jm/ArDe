@@ -2,20 +2,47 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-image: url("https://res.cloudinary.com/df9wuyrbg/image/upload/v1748883251/Marmol_negro_quysqq.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 .shop-content-wrapper {
+  position: relative;
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   text-align: center;
+  padding-top: 100px;
 }
 
-.shop-title h3{
+
+
+.shop-content-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background: rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+}
+
+.shop-content-wrapper > * {
+  position: relative;
+  z-index: 1;
+}
+
+
+.shop-title{
   font-family: 'Archer', sans-serif;
-  font-size: 22px;
+  font-size: 30px;
+  color: #ffffff;
+  margin: 0 0 100px 0;
 }
 
 #shop-contact-section {

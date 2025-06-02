@@ -113,6 +113,22 @@
   background-color: #d91c1c;
 }
 
+.orders-button {
+  background-color: #000000;
+  color: white;
+  border-radius: 25px;
+  border: none;
+  padding: 6px 15px;
+  font-weight: bold;
+  font-size: 14px;
+  margin-top: 15px;
+}
+
+.orders-button:hover {
+  background-color: #b99e5c;
+  color: black;
+}
+
 .sweet-button {
   outline: none !important;
   box-shadow: none !important;
@@ -127,6 +143,25 @@
 .sweet-button:hover {
   background-color: #d91c1c;
 }
+
+/* Botón de confirmación personalizado para SweetAlert2 */
+.swal2-confirm {
+  background-color: #000000;
+  color: white;
+  border-radius: 25px;
+  padding: 6px 15px;
+  border: none;
+  font-weight: bold;
+  font-size: 14px;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Hover personalizado para botón de confirmación */
+.swal2-confirm:hover {
+  background-color: #d91c1c;
+}
+
 
 .sweet-perfil {
   font-family: 'Archer', sans-serif;

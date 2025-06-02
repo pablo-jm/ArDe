@@ -1,14 +1,15 @@
 import express  from 'express';
-import { getAllOrders, getOrderById, createOrder, updateOrder, deleteOrder } from '../controllers/OrderController.js'
+import { verifyToken } from '../middleware/verifyToken.js';
+import { getAllOrders, getOrdersByLoggedUser, createOrder, updateOrder, deleteOrder } from '../controllers/OrderController.js'
 
 
 const orderRouter = express.Router();
 
 
 orderRouter.get('/', getAllOrders)
-orderRouter.get('/:id', getOrderById)
-orderRouter.post('/', createOrder)
-orderRouter.put('/:id', updateOrder)
+orderRouter.get('/user/me', verifyToken, getOrdersByLoggedUser)
+orderRouter.post('/', verifyToken, createOrder)
+orderRouter.put('/:id', verifyToken, updateOrder)
 orderRouter.delete('/:id', deleteOrder)
 
 

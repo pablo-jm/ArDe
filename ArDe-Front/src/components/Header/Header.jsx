@@ -19,6 +19,54 @@ const Header = () => {
         }
       }
     }, []);
+
+
+    const handleMyOrders = async () => {
+      const token = localStorage.getItem('token');
+
+      try {
+        const response = await fetch('http://localhost:3000/orders/user/me', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          }
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          return Swal.fire('Error', data.message || 'No se pudieron obtener los pedidos.', 'error');
+        }
+
+        if (data.length === 0) {
+          return Swal.fire('No hay pedidos', 'Aún no has realizado ningún pedido.', 'info');
+        }
+        
+        const orderHtml = data.map(order => `
+          <div style="text-align: left; margin-bottom: 10px;">
+            <strong>ID:</strong> ${order.id}<br>
+            <strong>Dirección:</strong> ${order.ship_address}<br>
+            <strong>Teléfono:</strong> ${order.phone_number}<br>
+            <strong>Precio:</strong> $${order.price}<br>
+            <hr>
+          </div>
+        `).join('');
+
+        Swal.fire({
+          title: 'Mis pedidos',
+          html: orderHtml,
+          width: 600,
+          scrollbarPadding: false,
+          customClass: {
+            popup: 'sweet-popup',
+            title: 'sweet-title'
+          }
+        });
+
+      } catch (err) {
+        Swal.fire('Error', err.message || 'Error de red o del servidor.', 'error');
+      }
+    };
+
     
 
     const handleLogout = async () => {
@@ -103,6 +151,7 @@ const Header = () => {
             <input type="password" id="new-password" class="sweet-input" placeholder="Nueva contraseña" style="width: 80%; padding: 6px; margin-bottom: 8px;">
           </form>
             <button type="button" id="logout-button" class="logout-button">Cerrar sesión</button>
+            <button type="button" id="orders-button" class="orders-button">Mis pedidos</button>
           <div style="margin-top: 15px;">
             <a href="#" id="delete-link" style="color: #1a73e8; text-decoration: none; font-size: 12px;">Puedes eliminar tu cuenta aquí</a>
           </div>
@@ -115,7 +164,7 @@ const Header = () => {
         container: 'sweet-container',
         popup: 'sweet-popup',
         title: 'sweet-perfil',
-        confirmButton: 'sweet-confirm'
+        confirmButton: 'sweet-button'
       },
       didOpen: () => {
         const logoutButton = Swal.getPopup().querySelector('#logout-button');
@@ -123,6 +172,11 @@ const Header = () => {
 
         const deleteButton = Swal.getPopup().querySelector('#delete-link');
         deleteButton.addEventListener('click', handleDeleteAccount);
+
+        const ordersButton = Swal.getPopup().querySelector('#orders-button');
+          if (ordersButton) {
+            ordersButton.addEventListener('click', handleMyOrders);
+          }
       },
 
       preConfirm: async () => {

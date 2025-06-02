@@ -60,7 +60,7 @@ const OrderModel = sequelize.define('Order', {
 
 
 OrderModel.belongsTo(UserModel, { foreignKey: 'user_id' });
-OrderModel.belongsTo(WorkModel, { foreignKey: 'work_id' });
+OrderModel.belongsTo(WorkModel, { foreignKey: 'work_id', as: 'work' });
 
 
 export default OrderModel;
