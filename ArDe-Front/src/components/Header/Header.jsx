@@ -3,6 +3,7 @@ import { useState, useEffect} from 'react';
 import Swal from 'sweetalert2';
 import AuthButton from '../AuthButton/AuthButton.jsx'
 import { useLocation } from 'react-router-dom';
+import { handleCart } from '../../services/OrderServices.jsx'
 import './Header.css';
 
 const Header = () => {
@@ -43,7 +44,8 @@ const Header = () => {
         
         const orderHtml = data.map(order => `
           <div style="text-align: left; margin-bottom: 10px;">
-            <strong>ID:</strong> ${order.id}<br>
+            <img src=${order.work?.image_url} alt=${order.work?.title}>
+            <strong>Obra:</strong> ${order.work?.title || 'Sin título'}<br>
             <strong>Dirección:</strong> ${order.ship_address}<br>
             <strong>Teléfono:</strong> ${order.phone_number}<br>
             <strong>Precio:</strong> $${order.price}<br>
@@ -93,7 +95,7 @@ const Header = () => {
     const handleDeleteAccount = async () => {
       const confirm = await Swal.fire({
         title: '¿Eliminar cuenta?',
-        text: 'Esta acción eliminará permanentemente tu cuenta.',
+        text: 'Esta acción eliminará permanentemente tu cuenta y todos tus pedidos.',
         icon: 'warning',
         backdrop: 'rgba(0, 0, 0, 0.7)',
         confirmButtonText: 'Eliminar',
@@ -110,6 +112,44 @@ const Header = () => {
           const token = localStorage.getItem('token');
           const user = JSON.parse(localStorage.getItem('user'));
 
+          
+          const unpaidResponse = await fetch('http://localhost:3000/orders/user/me/unpaid', {
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          });
+
+          
+          const paidResponse = await fetch('http://localhost:3000/orders/user/me', {
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          });
+
+          let allOrders = [];
+
+          
+          if (unpaidResponse.ok) {
+            const unpaidOrders = await unpaidResponse.json();
+            allOrders = [...allOrders, ...unpaidOrders];
+          }
+
+          if (paidResponse.ok) {
+            const paidOrders = await paidResponse.json();
+            allOrders = [...allOrders, ...paidOrders];
+          }
+
+
+          for (const order of allOrders) {
+            await fetch(`http://localhost:3000/orders/${order.id}`, {
+              method: 'DELETE',
+              headers: {
+                Authorization: `Bearer ${token}`
+              }
+            });
+          }
+
+          
           const response = await fetch(`http://localhost:3000/users/${user.email}`, {
             method: 'DELETE',
             headers: {
@@ -120,7 +160,7 @@ const Header = () => {
           const data = await response.json();
 
           if (response.ok) {
-            Swal.fire('Cuenta eliminada', '', 'success').then(() => {
+            Swal.fire('Cuenta eliminada', `Tu cuenta y ${allOrders.length} pedido(s) han sido eliminados.`, 'success').then(() => {
               localStorage.clear();
               window.location.href = '/';
             });
@@ -256,10 +296,27 @@ const Header = () => {
       </div>
       <nav className="nav-links">
         <ul>
-          <li><Link to="/shop">Tienda</Link></li>
+          <li>
+            {user && location.pathname === '/shop' ?  (
+              <div className="shop-cart">
+                <span onClick={handleCart} className="cart-icon-wrapper">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="white">
+                    <path d="M6 7V6a6 6 0 1 1 12 0v1h3a1 1 0 0 1 .99 1.14l-1.5 
+                            13A2 2 0 0 1 18.5 23h-13a2 2 0 0 1-1.99-1.86l-1.5-13A1 1 0 
+                            0 1 4 7h2zm2 0h8V6a4 4 0 0 0-8 0v1z"/>
+                  </svg>
+                </span>
+              </div>
+
+            ) : (
+                <Link to="/shop">Tienda</Link>
+            )}
+          </li>
+
           {location.pathname !== '/admin/dashboard' && (
             <li><a href={contactLink}>Contacto</a></li>
           )}
+
           <li>
             {user ? (
               <div className="user-session">

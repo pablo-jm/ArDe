@@ -1,6 +1,6 @@
 import Header from '../../components/Header/Header';
-import { showCreateWorkModal, showUpdateWorkModal } from '../../services/UpdateCreateWork';
-import { showUpdateEventModal } from '../../services/UpdateEvent';
+import { showCreateWorkModal, showUpdateWorkModal } from '../../services/WorkServices';
+import { showUpdateEventModal } from '../../services/EventServices';
 import './Dashboard.css'
 
 const Dashboard = () => {

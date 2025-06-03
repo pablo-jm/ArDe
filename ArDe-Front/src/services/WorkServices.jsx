@@ -253,3 +253,106 @@ const validateWorkData = ({ title, description, image_url, price, dimensions }) 
 
 
 
+export const handleWorkPreview = async (work) => {
+  await Swal.fire({
+    html: `
+      <div class="swal-container">
+        <div class="swal-image-container">
+          <img src="${work.image_url}" alt="${work.title}" />
+        </div>
+        <div class="swal-info-container">
+          <div class="swal-title">${work.title}</div>
+          <div class="swal-description">${work.description || ''}</div>
+          <button id="btn-add" class="swal-add-btn">Añadir</button>
+        </div>
+      </div>
+    `,
+    customClass: {
+      popup: 'swal-popup-custom'
+    },
+    showConfirmButton: false,
+    didOpen: () => {
+      const btnAdd = Swal.getPopup().querySelector('#btn-add');
+      btnAdd.addEventListener('click', async () => {
+        Swal.close();
+
+        const { value: formValues } = await Swal.fire({
+          title: 'Datos de envío',
+          html: `
+            <input id="ship_address" class="sweet-shipping-input" placeholder="Dirección de envío" />
+            <input id="phone_number" class="sweet-shipping-input" placeholder="Teléfono" />
+          `,
+          confirmButtonText: 'Añadir',
+          focusConfirm: false,
+          backdrop: 'rgba(0, 0, 0, 0.5)',
+          customClass: {
+            container: 'sweet-shipping-container',
+            popup: 'sweet-shipping-popup',
+            title: 'sweet-shipping-title',
+            confirmButton: 'sweet-shipping-button'
+          },
+          preConfirm: () => {
+            const ship_address = Swal.getPopup().querySelector('#ship_address').value.trim();
+            const phone_number = Swal.getPopup().querySelector('#phone_number').value.trim();
+
+            if (!ship_address || ship_address.length < 10 || ship_address.length > 255) {
+              Swal.showValidationMessage('La dirección de envío debe tener entre 10 y 255 caracteres.');
+              return false;
+            }
+
+            const phoneRegex = /^[0-9+\-()\s]+$/;
+            if (!phone_number || !phoneRegex.test(phone_number)) {
+              Swal.showValidationMessage('El número de teléfono no es válido.');
+              return false;
+            }
+
+            return { ship_address, phone_number };
+          }
+        });
+
+        if (!formValues) return;
+
+        try {
+          const token = localStorage.getItem('token');
+          if (!token) {
+            return Swal.fire('Error', 'Debes iniciar sesión para añadir obras', 'error');
+          }
+
+          const userDataStr = localStorage.getItem('user');
+          const userData = userDataStr ? JSON.parse(userDataStr) : null;
+          const user_id = userData?.id;
+          
+          const response = await fetch('http://localhost:3000/orders', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${token}`
+            },
+            body: JSON.stringify({
+              user_id,
+              work_id: work.id,
+              ship_address: formValues.ship_address,
+              phone_number: formValues.phone_number,
+              price: work.price
+            })
+          });
+
+          const data = await response.json();
+
+          if (!response.ok) {
+            throw new Error(data.message || 'Error creating order');
+          }
+
+          Swal.fire('Obra añadida', 'Añadido al carrito', 'success');
+
+        } catch (error) {
+          Swal.fire('Error', error.message, 'error');
+        }
+      });
+    }
+  });
+};
+
+
+
+

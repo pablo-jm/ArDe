@@ -35,6 +35,8 @@
 
 .nav-links li {
   margin: 0 20px;
+  display: flex;
+  align-items: center;
 }
 
 .nav-links a {
@@ -61,6 +63,27 @@
   font-size: 18px;
   color: white;
 }
+
+.cart-icon-wrapper svg {
+  width: 30px;
+  height: 30px;
+  fill: white;
+  cursor: pointer;
+  transition: fill 0.2s ease-in-out;
+  margin-right: 5px;
+}
+
+.cart-icon-wrapper svg:hover {
+  fill: #cccccc;
+}
+
+.shop-cart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
 
 .sweet-popup {
   background-color: #EEEEEE;
@@ -144,7 +167,6 @@
   background-color: #d91c1c;
 }
 
-/* Botón de confirmación personalizado para SweetAlert2 */
 .swal2-confirm {
   background-color: #000000;
   color: white;
@@ -157,7 +179,6 @@
   box-shadow: none !important;
 }
 
-/* Hover personalizado para botón de confirmación */
 .swal2-confirm:hover {
   background-color: #d91c1c;
 }

@@ -1,7 +1,9 @@
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer'
 import ContactSection from '../../components/ContactSection/ContactSection'
+import CatalogueSection from '../../components/CatalogueSection/CatalogueSection';
 import './Shop.css'
+
 
 const Shop = () => {
   return (
@@ -11,9 +13,7 @@ const Shop = () => {
           <div className="shop-title">
             <h3>Tienda</h3>
           </div>
-          <div className="catalogo-grid">
-
-          </div>
+          <CatalogueSection />
         </main>
         <div id="shop-contact-section">
             <ContactSection />

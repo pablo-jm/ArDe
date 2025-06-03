@@ -11,7 +11,7 @@ const EventsSection = () => {
         setEvents(data);
       })
       .catch(err => {
-        console.error('Error al traer eventos:', err);
+        console.error('Error bringing events:', err);
       });
   }, []);
 

@@ -29,6 +29,22 @@ export const getOrdersByLoggedUser = async (req, res) => {
 };
 
 
+export const getUnpaidOrdersByLoggedUser = async (req, res) => {
+  try {
+    const userId = req.user.id;
+
+    const orders = await OrderModel.findAll({
+      where: { user_id: userId, state: 'Unpaid' },
+      include: [{ model: WorkModel, as: 'work', attributes: ['title'] }]
+    });
+
+    res.json(orders);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+
 
 
 export const createOrder = async(req, res) => {
@@ -66,7 +82,7 @@ export const deleteOrder = async (req, res) => {
 	try{
 			await OrderModel.destroy({ where:{id:req.params.id}})
 			res.json({message: "Order deleted successfully!"})
-	} catch{
+	} catch(error){
 			res.json({message: error.message})
 	}
 }
