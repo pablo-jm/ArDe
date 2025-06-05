@@ -68,8 +68,8 @@ Before you start, ensure you have the following installed:
 ### 🖥️ Mobile Version  
 
 | Home Page | Shop Page | Shop Preview | Shopping Cart |
-|-----------|----------------|------------------------|----------------|
-| [![Home Page](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749142154/Home_Page_Mobile_x6pid1.png)](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749142154/Home_Page_Mobile_x6pid1.png) | | | | 
+|-----------|-----------|--------------|----------------|
+| <a href="https://res.cloudinary.com/df9wuyrbg/image/upload/v1749142154/Home_Page_Mobile_x6pid1.png"><img src="https://res.cloudinary.com/df9wuyrbg/image/upload/v1749142154/Home_Page_Mobile_x6pid1.png" width="200"/></a> |  |  |  |
 
 ---
 
