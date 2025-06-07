@@ -42,16 +42,22 @@ const Header = () => {
           return Swal.fire('No hay pedidos', 'Aún no has realizado ningún pedido.', 'info');
         }
         
-        const orderHtml = data.map(order => `
-          <div style="text-align: left; margin-bottom: 10px;">
-            <img src=${order.work?.image_url} alt=${order.work?.title}>
+        const orderHtml = data.map(order => {
+          const imageUrl = order.work?.image_url || '';
+          const fullImageUrl = imageUrl.startsWith('http') ? imageUrl : `http://localhost:3000${imageUrl}`;
+      
+          return `
+          <div style="text-align: center; margin-bottom: 10px;">
+          <img src="${fullImageUrl}" alt="${order.work?.title}" style="max-width: 100px; height: auto; display: block; margin: 0 auto 8px;">
+          <div>
             <strong>Obra:</strong> ${order.work?.title || 'Sin título'}<br>
             <strong>Dirección:</strong> ${order.ship_address}<br>
             <strong>Teléfono:</strong> ${order.phone_number}<br>
-            <strong>Precio:</strong> $${order.price}<br>
-            <hr>
+            <strong>Precio:</strong> $${order.price}
           </div>
-        `).join('');
+          <hr class="order-separator">
+        </div>
+        `}).join('');
 
         Swal.fire({
           title: 'Mis pedidos',
@@ -59,8 +65,8 @@ const Header = () => {
           width: 600,
           scrollbarPadding: false,
           customClass: {
-            popup: 'sweet-popup',
-            title: 'sweet-title'
+            popup: 'sweet-order-cart-popup',
+            title: 'sweet-order-cart-title'
           }
         });
 

@@ -79,15 +79,14 @@ export const handleCart = async () => {
       return Swal.fire('Carrito vacío', 'No tienes pedidos pendientes de pago.', 'info');
     }
 
-    console.log('Pedidos obtenidos:', orders);
-
+    
     const orderItemsHtml = orders.map(order => {
       const imageUrl = order.work?.image_url || '';
       const fullImageUrl = imageUrl.startsWith('http') ? imageUrl : `http://localhost:3000${imageUrl}`;
 
       return `
       <label class="cart-item-label" style="display:flex; align-items:center; margin-bottom: 15px; cursor: pointer;">
-        <input type="checkbox" class="cart-item-checkbox" data-order-id="${order.id}" style="margin-right: 10px;"/>
+        <input type="checkbox" class="cart-item-checkbox" data-order-id="${order.id}" style="margin-right: 10px; "/>
         <div style="display:flex; align-items:center; gap: 15px; width: 100%;">
           <div style="width: 60px; height: 60px; border: 1px solid #ccc; border-radius: 10px; overflow: hidden;">
             <img src="${fullImageUrl}" alt="${order.work?.title || ''}" style="width: 100%; height: 100%; object-fit: cover;">
@@ -107,16 +106,16 @@ export const handleCart = async () => {
         `<div style="max-height: 300px; overflow-y: auto; padding-right: 10px; margin-bottom: 20px;">
           ${orderItemsHtml}
         </div>
-        <div style="display: flex; justify-content: space-between; gap: 10px;">
-          <button id="buy-btn" class="sweet-button" style="flex: 1;">Comprar</button>
-          <button id="delete-btn" class="sweet-button" style="flex: 1;">Eliminar</button>
+        <div class="cart-buttons">
+          <button id="buy-btn" class="sweet-cart-button">Comprar</button>
+          <button id="delete-btn" class="sweet-cart-button">Eliminar</button>
         </div>`,
       showConfirmButton: false,
       showCancelButton: false,
       width: 600,
       customClass: {
         popup: 'sweet-popup',
-        title: 'sweet-cart-title'
+        title: 'sweet-order-cart-title'
       },
       didOpen: () => {
         const buyBtn = Swal.getPopup().querySelector('#buy-btn');
