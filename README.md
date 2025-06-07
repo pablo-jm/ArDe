@@ -62,14 +62,14 @@ Before you start, ensure you have the following installed:
 
 | Home Page | Shop Page | Shop Preview | Shopping Cart |
 |-----------|----------------|------------------------|----------------|
-| [![Home Page](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749139648/Home_Page_il4ytx.png)](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749139648/Home_Page_il4ytx.png) | [![Shop Page](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749139648/Shop_Page_pl9u7y.png)](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749139648/Shop_Page_pl9u7y.png) | [![Shop Preview](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749139790/Shop_preview_sizkld.png)](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749139790/Shop_preview_sizkld.png) | [![ Shopping Cart]()]() |
+| [![Home Page](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749139648/Home_Page_il4ytx.png)](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749139648/Home_Page_il4ytx.png) | [![Shop Page](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749139648/Shop_Page_pl9u7y.png)](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749139648/Shop_Page_pl9u7y.png) | [![Shop Preview](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749139790/Shop_preview_sizkld.png)](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749139790/Shop_preview_sizkld.png) | [![Shopping Cart](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749314492/Shopping_Cart_xt5qgv.png)](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749314492/Shopping_Cart_xt5qgv.png) |
 
 
 ### 🖥️ Mobile Version  
 
 | Home Page | Shop Page | Shop Preview | Shopping Cart |
 |-----------|-----------|--------------|----------------|
-| <a href="https://res.cloudinary.com/df9wuyrbg/image/upload/v1749142154/Home_Page_Mobile_x6pid1.png"><img src="https://res.cloudinary.com/df9wuyrbg/image/upload/v1749142154/Home_Page_Mobile_x6pid1.png" width="200"/></a> |  |  | <a href="https://res.cloudinary.com/df9wuyrbg/image/upload/v1749314492/Shopping_Cart_xt5qgv.png"><img src="https://res.cloudinary.com/df9wuyrbg/image/upload/v1749314492/Shopping_Cart_xt5qgv.png" width="200"/></a> |
+| <a href="https://res.cloudinary.com/df9wuyrbg/image/upload/v1749142154/Home_Page_Mobile_x6pid1.png"><img src="https://res.cloudinary.com/df9wuyrbg/image/upload/v1749142154/Home_Page_Mobile_x6pid1.png" width="200"/></a> |  |  |  |
 
 ---
 
