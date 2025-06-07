@@ -195,7 +195,7 @@
 .cart-buttons {
   display: flex;
   justify-content: center;
-  gap: 15%;
+  gap: 10%;
 }
 
 .sweet-cart-button {
