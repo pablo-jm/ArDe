@@ -88,7 +88,7 @@ export const handleCart = async () => {
       <label class="cart-item-label" style="display:flex; align-items:center; margin-bottom: 15px; cursor: pointer;">
         <input type="checkbox" class="cart-item-checkbox" data-order-id="${order.id}" style="margin-right: 10px; "/>
         <div style="display:flex; align-items:center; gap: 15px; width: 100%;">
-          <div style="width: 60px; height: 60px; border: 1px solid #ccc; border-radius: 10px; overflow: hidden;">
+          <div style="width: 60px; height: 60px; border: 1px solid #000; border-radius: 10px; overflow: hidden; margin-left: 15px;">
             <img src="${fullImageUrl}" alt="${order.work?.title || ''}" style="width: 100%; height: 100%; object-fit: cover;">
           </div>
           <div style="display: flex; flex-direction: column; gap: 2px; flex: 1;">
