@@ -62,7 +62,7 @@ Before you start, ensure you have the following installed:
 
 | Home Page | Shop Page | Shop Preview | Shopping Cart |
 |-----------|----------------|------------------------|----------------|
-| [![Home Page](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749139648/Home_Page_il4ytx.png)](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749139648/Home_Page_il4ytx.png) | [![Shop Page](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749139648/Shop_Page_pl9u7y.png)](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749139648/Shop_Page_pl9u7y.png) | [![Shop Preview](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749139790/Shop_preview_sizkld.png)](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749139790/Shop_preview_sizkld.png) | [![Shopping Cart](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749314492/Shopping_Cart_xt5qgv.png)](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749314492/Shopping_Cart_xt5qgv.png) |
+| [![Home Page](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749139648/Home_Page_il4ytx.png)](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749139648/Home_Page_il4ytx.png) | [![Shop Page](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749139648/Shop_Page_pl9u7y.png)](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749139648/Shop_Page_pl9u7y.png) | [![Shop Preview](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749139790/Shop_preview_sizkld.png)](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749139790/Shop_preview_sizkld.png) | | [![Shopping Cart](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749314492/Shopping_Cart_xt5qgv.png)](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749314492/Shopping_Cart_xt5qgv.png) | |
 
 
 ### 🖥️ Mobile Version  
