@@ -1,4 +1,4 @@
-import Swal from 'sweetalert2';
+import Swal from 'sweetalert2'; 
 
 const handleBuyOrders = async (orderIds) => {
   const token = localStorage.getItem('token');
@@ -79,21 +79,27 @@ export const handleCart = async () => {
       return Swal.fire('Carrito vacío', 'No tienes pedidos pendientes de pago.', 'info');
     }
 
-    const orderItemsHtml = orders.map(order => 
-      `<label class="cart-item-label" style="display:flex; align-items:center; margin-bottom: 15px; cursor: pointer;">
+    console.log('Pedidos obtenidos:', orders);
+
+    const orderItemsHtml = orders.map(order => {
+      const imageUrl = order.work?.image_url || '';
+      const fullImageUrl = imageUrl.startsWith('http') ? imageUrl : `http://localhost:3000${imageUrl}`;
+
+      return `
+      <label class="cart-item-label" style="display:flex; align-items:center; margin-bottom: 15px; cursor: pointer;">
         <input type="checkbox" class="cart-item-checkbox" data-order-id="${order.id}" style="margin-right: 10px;"/>
-        <div style="display:flex; align-items:center; gap: 15px;">
+        <div style="display:flex; align-items:center; gap: 15px; width: 100%;">
           <div style="width: 60px; height: 60px; border: 1px solid #ccc; border-radius: 10px; overflow: hidden;">
-            <img src="${order.work?.image_url || ''}" alt="${order.work?.title || ''}" style="width: 100%; height: 100%; object-fit: cover;">
+            <img src="${fullImageUrl}" alt="${order.work?.title || ''}" style="width: 100%; height: 100%; object-fit: cover;">
           </div>
-          <div>
+          <div style="display: flex; flex-direction: column; gap: 2px; flex: 1;">
             <div style="font-weight: bold;">${order.work?.title || 'Sin título'}</div>
             <div style="font-size: 12px; color: #666;">${order.work?.dimensions || ''}</div>
           </div>
-          <div style="margin-left: auto; font-weight: bold;">${order.price}€</div>
+          <div style="font-weight: bold;">${order.price}€</div>
         </div>
-      </label>`
-    ).join('');
+      </label>`;
+    }).join('');
 
     await Swal.fire({
       title: 'Carrito',
@@ -102,20 +108,33 @@ export const handleCart = async () => {
           ${orderItemsHtml}
         </div>
         <div style="display: flex; justify-content: space-between; gap: 10px;">
-          <button id="buy-btn" class="swal2-confirm swal2-styled" style="flex: 1;">Comprar</button>
-          <button id="delete-btn" class="swal2-cancel swal2-styled" style="flex: 1;">Eliminar</button>
-        </div>`
-      ,
+          <button id="buy-btn" class="sweet-button" style="flex: 1;">Comprar</button>
+          <button id="delete-btn" class="sweet-button" style="flex: 1;">Eliminar</button>
+        </div>`,
       showConfirmButton: false,
       showCancelButton: false,
       width: 600,
       customClass: {
         popup: 'sweet-popup',
-        title: 'sweet-title'
+        title: 'sweet-cart-title'
       },
       didOpen: () => {
         const buyBtn = Swal.getPopup().querySelector('#buy-btn');
         const deleteBtn = Swal.getPopup().querySelector('#delete-btn');
+
+        buyBtn.addEventListener('mouseenter', () => {
+          buyBtn.style.backgroundColor = '#d91c1c';
+        });
+        buyBtn.addEventListener('mouseleave', () => {
+          buyBtn.style.backgroundColor = '#000000';
+        });
+
+        deleteBtn.addEventListener('mouseenter', () => {
+          deleteBtn.style.backgroundColor = '#d91c1c';
+        });
+        deleteBtn.addEventListener('mouseleave', () => {
+          deleteBtn.style.backgroundColor = '#000000';
+        });
 
         buyBtn.addEventListener('click', () => {
           const selectedIds = Array.from(Swal.getPopup().querySelectorAll('.cart-item-checkbox:checked'))
@@ -144,6 +163,7 @@ export const handleCart = async () => {
     });
 
   } catch (error) {
+    console.error('Error obteniendo el carrito:', error);
     Swal.fire('Error', error.message || 'Error getting cart.', 'error');
   }
 };

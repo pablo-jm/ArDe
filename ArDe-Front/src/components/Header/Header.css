@@ -103,6 +103,13 @@
   margin-bottom: 10px;
 }
 
+.sweet-cart-title {
+  color: #000000;
+  font-family: 'Archer', sans-serif;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
 .sweet-confirm {
   background-color: #000000;
   color: white;

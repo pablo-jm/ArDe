@@ -35,7 +35,11 @@ export const getUnpaidOrdersByLoggedUser = async (req, res) => {
 
     const orders = await OrderModel.findAll({
       where: { user_id: userId, state: 'Unpaid' },
-      include: [{ model: WorkModel, as: 'work', attributes: ['title'] }]
+      include: [{
+        model: WorkModel,
+        as: 'work',
+        attributes: ['title', 'image_url', 'dimensions']
+      }]
     });
 
     res.json(orders);
