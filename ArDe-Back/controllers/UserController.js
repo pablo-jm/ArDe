@@ -1,5 +1,9 @@
 import UserModel from '../models/UserModel.js'
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+
+
+const SECRET_KEY = 'clave_secreta';
 
 
 export const getAllUsers = async(req, res) => {
@@ -38,7 +42,6 @@ export const createUser = async(req, res) => {
 
 export const updateUser = async (req, res) => {
   try {
-
     if (req.user.email !== req.params.email) {
       return res.status(403).json({ message: 'Denied access.' });
     }
@@ -46,21 +49,18 @@ export const updateUser = async (req, res) => {
     const updateData = {};
     const { fullName, password } = req.body;
 
-
     if (fullName) {
       updateData.full_name = fullName;
     }
 
     if (password && password.trim() !== '') {
-    try {
-
+      try {
         const hashedPassword = await bcrypt.hash(password, 10);
         updateData.password = hashedPassword;
-
-  } catch (error) {
-    console.error('Error encrypting password:', error.message);
-    return res.status(500).json({ message: 'Error encrypting password.' });
-  }
+      } catch (error) {
+        console.error('Error encrypting password:', error.message);
+        return res.status(500).json({ message: 'Error encrypting password.' });
+      }
     }
 
     if (Object.keys(updateData).length === 0) {
@@ -84,9 +84,16 @@ export const updateUser = async (req, res) => {
       where: { email: req.params.email }
     });
 
+    const token = jwt.sign(
+      { id: updatedUser.id, email: updatedUser.email, role: updatedUser.role },
+      SECRET_KEY,
+      { expiresIn: '2h' }
+    );
+
     res.json({
       message: 'User updated successfully!',
-      user: updatedUser
+      user: updatedUser,
+      token
     });
 
   } catch (error) {

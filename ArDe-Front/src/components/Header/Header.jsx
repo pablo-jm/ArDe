@@ -181,110 +181,104 @@ const Header = () => {
 
 
   const showProfileModal = () => {
+  const storedUser = localStorage.getItem('user');
+  if (!storedUser) return;
 
-    const storedUser = localStorage.getItem('user');
-    if (!storedUser) return;
+  const user = JSON.parse(storedUser);
 
-    const user = JSON.parse(storedUser);
-
-    Swal.fire({
-      title: 'Perfil',
-      html: `
-        <div style="text-align: center;">
-          <form id="profile-form">
-            <input type="text" id="full-name" class="sweet-input" placeholder="Nombre completo" value="${user.fullName || ''}" style="width: 80%; padding: 6px; margin-bottom: 8px;">
-            <input type="email" id="profile-email" class="sweet-input" placeholder="Email" value="${user.email}" style="width: 80%; padding: 6px; margin-bottom: 8px;" disabled>
-            <input type="password" id="new-password" class="sweet-input" placeholder="Nueva contraseña" style="width: 80%; padding: 6px; margin-bottom: 8px;">
-          </form>
-            <button type="button" id="logout-button" class="logout-button">Cerrar sesión</button>
-            <button type="button" id="orders-button" class="orders-button">Mis pedidos</button>
-          <div style="margin-top: 15px;">
-            <a href="#" id="delete-link" style="color: #1a73e8; text-decoration: none; font-size: 12px;">Puedes eliminar tu cuenta aquí</a>
-          </div>
+  Swal.fire({
+    title: 'Perfil',
+    html: `
+      <div style="text-align: center;">
+        <form id="profile-form">
+          <input type="text" id="full-name" class="sweet-input" placeholder="Nombre completo" value="${user.fullName || ''}" style="width: 80%; padding: 6px; margin-bottom: 8px;">
+          <input type="email" id="profile-email" class="sweet-input" placeholder="Email" value="${user.email}" style="width: 80%; padding: 6px; margin-bottom: 8px;" disabled>
+          <input type="password" id="new-password" class="sweet-input" placeholder="Nueva contraseña" style="width: 80%; padding: 6px; margin-bottom: 8px;">
+        </form>
+        <button type="button" id="logout-button" class="logout-button">Cerrar sesión</button>
+        <button type="button" id="orders-button" class="orders-button">Mis pedidos</button>
+        <div style="margin-top: 15px;">
+          <a href="#" id="delete-link" style="color: #1a73e8; text-decoration: none; font-size: 12px;">Puedes eliminar tu cuenta aquí</a>
         </div>
-      `,
-      confirmButtonText: 'Guardar cambios',
-      focusConfirm: false,
-      backdrop: 'rgba(0, 0, 0, 0.7)',
-      customClass: {
-        container: 'sweet-container',
-        popup: 'sweet-popup',
-        title: 'sweet-perfil',
-        confirmButton: 'sweet-button'
-      },
-      didOpen: () => {
-        const logoutButton = Swal.getPopup().querySelector('#logout-button');
-        logoutButton.addEventListener('click', handleLogout);
+      </div>
+    `,
+    confirmButtonText: 'Guardar cambios',
+    focusConfirm: false,
+    backdrop: 'rgba(0, 0, 0, 0.7)',
+    customClass: {
+      container: 'sweet-container',
+      popup: 'sweet-popup',
+      title: 'sweet-perfil',
+      confirmButton: 'sweet-button'
+    },
+    didOpen: () => {
+      Swal.getPopup().querySelector('#logout-button')?.addEventListener('click', handleLogout);
+      Swal.getPopup().querySelector('#delete-link')?.addEventListener('click', handleDeleteAccount);
+      Swal.getPopup().querySelector('#orders-button')?.addEventListener('click', handleMyOrders);
+    },
+    preConfirm: async () => {
+      const fullName = Swal.getPopup().querySelector('#full-name').value;
+      const newPassword = Swal.getPopup().querySelector('#new-password').value;
 
-        const deleteButton = Swal.getPopup().querySelector('#delete-link');
-        deleteButton.addEventListener('click', handleDeleteAccount);
+      if (!fullName) {
+        Swal.showValidationMessage('El nombre no puede estar vacío.');
+        return false;
+      }
 
-        const ordersButton = Swal.getPopup().querySelector('#orders-button');
-          if (ordersButton) {
-            ordersButton.addEventListener('click', handleMyOrders);
-          }
-      },
-
-      preConfirm: async () => {
-        const fullName = Swal.getPopup().querySelector('#full-name').value;
-        const newPassword = Swal.getPopup().querySelector('#new-password').value;
-
-        if (!fullName) {
-          Swal.showValidationMessage('El nombre no puede estar vacío.');
+      if (newPassword.trim() !== '') {
+        if (newPassword.length < 8 || newPassword.length > 100) {
+          Swal.showValidationMessage('La contraseña debe tener entre 8 y 100 caracteres.');
           return false;
         }
 
-        if (!newPassword || newPassword.length < 8 || newPassword.length > 100) {
-          Swal.showValidationMessage('La contraseña debe tener al menos 8 caracteres.');
-        }
-
-        const hasUpperCase = /[A-Z]/.test(newPassword);
-
-        if (!hasUpperCase) {
+        if (!/[A-Z]/.test(newPassword)) {
           Swal.showValidationMessage('La contraseña debe contener al menos una letra mayúscula.');
-        }
-
-        try {
-          const token = localStorage.getItem('token');
-
-          const body = { fullName };
-
-          if (newPassword.trim() !== '') {
-              body.password = newPassword;
-          }
-
-          const response = await fetch(`http://localhost:3000/users/${user.email}`, {
-            method: 'PUT',
-            headers: {
-              'Content-Type': 'application/json',
-              Authorization: `Bearer ${token}`,
-            },
-            body: JSON.stringify(body)
-          });
-
-          const data = await response.json();
-
-          if (!response.ok) {
-            Swal.showValidationMessage(data.message || 'Error al actualizar perfil');
-            return false;
-          }
-
-          const updatedUser = { ...user, fullName };
-
-          localStorage.setItem('token', data.token);
-          localStorage.setItem('user', JSON.stringify(updatedUser));
-
-          Swal.fire('¡Perfil actualizado!', '', 'success').then(() => {
-            window.location.reload();
-          });
-
-        } catch (error) {
-          Swal.showValidationMessage(error.message || 'Error de red o del servidor.');
           return false;
         }
       }
-    });
+
+      try {
+        const token = localStorage.getItem('token');
+
+        const body = { fullName };
+        if (newPassword.trim() !== '') {
+          body.password = newPassword;
+        }
+
+        const response = await fetch(`http://localhost:3000/users/${user.email}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(body)
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          Swal.showValidationMessage(data.message || 'Error al actualizar perfil');
+          return false;
+        }
+
+        const updatedUser = { ...user, fullName };
+        localStorage.setItem('user', JSON.stringify(updatedUser));
+        if (data.token) {
+          localStorage.setItem('token', data.token);
+        }
+
+        Swal.fire('¡Perfil actualizado!', '', 'success').then(() => {
+          window.location.reload();
+        });
+
+      } catch (error) {
+        Swal.showValidationMessage(error.message || 'Error de red o del servidor.');
+        return false;
+      }
+    }
+  });
 };
+
 
   const logoLink = user?.role === 'admin' ? '/admin/dashboard' : '/';
 
