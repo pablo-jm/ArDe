@@ -29,6 +29,7 @@ const handleBuyOrders = async (orderIds) => {
   }
 };
 
+
 const handleDeleteOrders = async (orderIds) => {
   const token = localStorage.getItem('token');
   if (!token) {
@@ -76,11 +77,17 @@ export const handleCart = async () => {
     }
 
     if (orders.length === 0) {
-      return Swal.fire('Carrito vacío', 'No tienes pedidos pendientes de pago.', 'info');
+      return Swal.fire('Carrito vacío', 'No tienes pedidos para comprar.', 'info');
     }
 
     
-    const orderItemsHtml = orders.map(order => {
+    const filteredOrders = orders.filter(order => order.work?.state !== 'sold');
+
+    if (filteredOrders.length === 0) {
+      return Swal.fire('Carrito vacío', 'No tienes pedidos para comprar.', 'info');
+    }
+
+  const orderItemsHtml = filteredOrders.map(order => {
       const imageUrl = order.work?.image_url || '';
       const fullImageUrl = imageUrl.startsWith('http') ? imageUrl : `http://localhost:3000${imageUrl}`;
 

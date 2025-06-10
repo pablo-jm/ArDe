@@ -4,7 +4,9 @@ import WorkModel from '../models/WorkModel.js'
 
 export const getAllWorks = async(req, res) => {
     try{
-        const works = await WorkModel.findAll();
+        const works = await WorkModel.findAll({
+            where: { state: 'selling' }
+        });
         res.json(works);
     }catch(error){
         res.json({message: error.message});
@@ -52,30 +54,19 @@ export const createWork = async(req, res) => {
 
 
 export const updateWork = async (req, res) => {
-  try {
-    const { state } = req.body;
-
-    if (state === 'sold') {
-      await WorkModel.destroy({ where: { title: req.params.title } });
-      return res.json({ message: 'Obra sin stock eliminada.' });
+    try {
+        const { state } = req.body;
+        
+        await WorkModel.update(req.body, { where: { title: req.params.title } });
+        
+        if (state === 'sold') {
+            res.json({ message: 'Obra sin stock.' });
+        } else {
+            res.json({ message: 'Work updated successfully!' });
+        }
+        
+    } catch (error) {
+        res.status(500).json({ message: error.message });
     }
-
-    await WorkModel.update(req.body, { where: { title: req.params.title } });
-    res.json({ message: 'Work updated successfully!' });
-
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
 };
 
-
-
-
-export const deleteWork = async (req, res) => {
-	try{
-			await WorkModel.destroy({ where:{title:req.params.title}})
-			res.json({message: "Work deleted successfully!"})
-	} catch{
-			res.json({message: error.message})
-	}
-}

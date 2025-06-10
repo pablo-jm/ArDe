@@ -10,15 +10,15 @@ import authRoutes from "./routes/auth.router.js";
 
 const app = express();
 
-//Raiz
+
 app.get('/', (req, res) => {
     res.send('Hola API');
 });
 
 
-//Middlewares
-app.use(cors({origin: 'http://localhost:5173' })); //Evita errores de CORS policy
-app.use(express.json()); //Parsea info a json auto
+
+app.use(cors({origin: 'http://localhost:5173' }));
+app.use(express.json());
 
 app.use('/auth', authRoutes);
 app.use('/users', userRouter);
@@ -27,7 +27,7 @@ app.use('/orders', orderRouter);
 app.use('/events', eventRouter);
 
 
-//Conexión a base de datos
+
 try {
     await db.authenticate();
     console.log('✅ Conectado a la base de datos');
@@ -36,7 +36,6 @@ try {
 }
 
 
-//Server
 app.listen(3000,() =>{
-console.log('✅server up in http://localhost:3000/')
-} )
+    console.log('✅server up in http://localhost:3000/')
+})

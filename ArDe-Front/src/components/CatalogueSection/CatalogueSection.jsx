@@ -9,20 +9,22 @@ const CatalogueSection = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:3000/works")
-      .then(res => {
-        if (!res.ok) throw new Error("Error loading works");
-        return res.json();
-      })
-      .then(data => {
-        setWorks(data);
-        setLoading(false);
-      })
-      .catch(err => {
-        setError(err.message);
-        setLoading(false);
-      });
-  }, []);
+  fetch("http://localhost:3000/works")
+    .then(res => {
+      if (!res.ok) throw new Error("Error loading works");
+      return res.json();
+    })
+    .then(data => {
+      const filtered = data.filter(work => work.state === 'selling');
+      setWorks(filtered);
+      setLoading(false);
+    })
+    .catch(err => {
+      setError(err.message);
+      setLoading(false);
+    });
+}, []);
+
 
   if (loading) return <p className="status-message">Cargando obras...</p>;
   if (error) return <p className="status-message">Error: {error}</p>;

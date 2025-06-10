@@ -6,16 +6,6 @@ import jwt from 'jsonwebtoken';
 const SECRET_KEY = 'clave_secreta';
 
 
-export const getAllUsers = async(req, res) => {
-    try{
-        const users = await UserModel.findAll();
-        res.json(users);
-    }catch(error){
-        res.json({message: error.message});
-    }
-}
-
-
 export const getUserByEmail = async(req, res) => {
     try{
         if (req.user.email !== req.params.email) {
@@ -29,15 +19,6 @@ export const getUserByEmail = async(req, res) => {
     }
 }
 
-
-export const createUser = async(req, res) => {
-    try{
-        await UserModel.create(req.body);
-        res.json({message: 'User created succesfully'});
-    }catch(error){
-        res.json({message: error.message});
-    }
-}
 
 
 export const updateUser = async (req, res) => {

@@ -1,25 +1,17 @@
 import OrderModel from '../models/OrderModel.js'
 import WorkModel from '../models/WorkModel.js'
 
-
-
-export const getAllOrders = async(req, res) => {
-    try{
-        const orders = await OrderModel.findAll();
-        res.json(orders);
-    }catch(error){
-        res.json({message: error.message});
-    }
-}
-
-
 export const getOrdersByLoggedUser = async (req, res) => {
   try {
     const userId = req.user.id;
 
     const orders = await OrderModel.findAll({
       where: { user_id: userId, state: 'Paid' },
-      include: [{ model: WorkModel, as: 'work', attributes: ['title', 'image_url', 'dimensions'] }]
+      include: [{ 
+        model: WorkModel, 
+        as: 'work', 
+        attributes: ['title', 'image_url', 'dimensions', 'state']
+      }]
     });
 
     res.json(orders);
@@ -27,7 +19,6 @@ export const getOrdersByLoggedUser = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
-
 
 export const getUnpaidOrdersByLoggedUser = async (req, res) => {
   try {
@@ -38,7 +29,7 @@ export const getUnpaidOrdersByLoggedUser = async (req, res) => {
       include: [{
         model: WorkModel,
         as: 'work',
-        attributes: ['title', 'image_url', 'dimensions']
+        attributes: ['title', 'image_url', 'dimensions', 'state']
       }]
     });
 
@@ -47,9 +38,6 @@ export const getUnpaidOrdersByLoggedUser = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
-
-
-
 
 export const createOrder = async(req, res) => {
     try {
@@ -69,10 +57,8 @@ export const createOrder = async(req, res) => {
     }
 }
 
-
-
 export const updateOrder = async(req,res) =>{
-	try{ 
+	try{
 			await OrderModel.update(req.body, { where:{id:req.params.id}})
 			res.json({message: "Order updated successfully!"})
 		}
@@ -81,7 +67,6 @@ export const updateOrder = async(req,res) =>{
 		}
 	}
 
-
 export const deleteOrder = async (req, res) => {
 	try{
 			await OrderModel.destroy({ where:{id:req.params.id}})
@@ -89,4 +74,4 @@ export const deleteOrder = async (req, res) => {
 	} catch(error){
 			res.json({message: error.message})
 	}
-}
+};

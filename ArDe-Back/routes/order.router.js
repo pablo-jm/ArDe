@@ -1,12 +1,11 @@
 import express  from 'express';
 import { verifyToken } from '../middleware/verifyToken.js';
-import { getAllOrders, getOrdersByLoggedUser, getUnpaidOrdersByLoggedUser, createOrder, updateOrder, deleteOrder } from '../controllers/OrderController.js'
+import { getOrdersByLoggedUser, getUnpaidOrdersByLoggedUser, createOrder, updateOrder, deleteOrder } from '../controllers/OrderController.js'
 
 
 const orderRouter = express.Router();
 
 
-orderRouter.get('/', getAllOrders)
 orderRouter.get('/user/me', verifyToken, getOrdersByLoggedUser)
 orderRouter.get('/user/me/unpaid', verifyToken, getUnpaidOrdersByLoggedUser);
 orderRouter.post('/', verifyToken, createOrder)
