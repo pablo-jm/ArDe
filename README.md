@@ -60,16 +60,16 @@ Before you start, ensure you have the following installed:
 
 ### 🖥️ Desktop Version  
 
-| Home Page | Shop Page | Shop Preview | Shopping Cart |
-|-----------|----------------|------------------------|----------------|
-| [![Home Page](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749139648/Home_Page_il4ytx.png)](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749139648/Home_Page_il4ytx.png) | [![Shop Page](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749139648/Shop_Page_pl9u7y.png)](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749139648/Shop_Page_pl9u7y.png) | [![Shop Preview](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749139790/Shop_preview_sizkld.png)](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749139790/Shop_preview_sizkld.png) | [![Shopping Cart](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749314492/Shopping_Cart_xt5qgv.png)](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749314492/Shopping_Cart_xt5qgv.png) |
+| Home Page | Shop Page | Shop Preview | Shopping Cart | Orders Section |
+|-----------|----------------|------------------------|----------------|----------------|
+| [![Home Page](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749139648/Home_Page_il4ytx.png)](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749139648/Home_Page_il4ytx.png) | [![Shop Page](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749139648/Shop_Page_pl9u7y.png)](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749139648/Shop_Page_pl9u7y.png) | [![Shop Preview](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749139790/Shop_preview_sizkld.png)](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749139790/Shop_preview_sizkld.png) | [![Shopping Cart](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749314492/Shopping_Cart_xt5qgv.png)](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749314492/Shopping_Cart_xt5qgv.png) | [![Orders section](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749570629/My_orders_n8uela.png)](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749570629/My_orders_n8uela.png) |
 
 
 ### 🖥️ Mobile Version  
 
-| Home Page | Shop Page | Shop Preview | Shopping Cart |
-|-----------|-----------|--------------|----------------|
-| <a href="https://res.cloudinary.com/df9wuyrbg/image/upload/v1749142154/Home_Page_Mobile_x6pid1.png"><img src="https://res.cloudinary.com/df9wuyrbg/image/upload/v1749142154/Home_Page_Mobile_x6pid1.png" width="200"/></a> |  |  |  |
+| Home Page | Shop Page | Shop Preview | Shopping Cart | Orders Section |
+|-----------|-----------|--------------|----------------|----------------|
+| <a href="https://res.cloudinary.com/df9wuyrbg/image/upload/v1749142154/Home_Page_Mobile_x6pid1.png"><img src="https://res.cloudinary.com/df9wuyrbg/image/upload/v1749142154/Home_Page_Mobile_x6pid1.png" width="200"/></a> | <a href="https://res.cloudinary.com/df9wuyrbg/image/upload/v1749570533/Shop_Page_Mobile_gvwwqv.png"><img src="https://res.cloudinary.com/df9wuyrbg/image/upload/v1749570533/Shop_Page_Mobile_gvwwqv.png" width="200"/></a> | <a href="https://res.cloudinary.com/df9wuyrbg/image/upload/v1749570533/Shop_Preview_Mobile_pstv7e.png"><img src="https://res.cloudinary.com/df9wuyrbg/image/upload/v1749570533/Shop_Preview_Mobile_pstv7e.png" width="200"/></a> | <a href="https://res.cloudinary.com/df9wuyrbg/image/upload/v1749573532/Shopping_Cart_Mobile_i2wohe.png"><img src="https://res.cloudinary.com/df9wuyrbg/image/upload/v1749573532/Shopping_Cart_Mobile_i2wohe.png" width="200"/></a> | <a href="https://res.cloudinary.com/df9wuyrbg/image/upload/v1749568159/Pixel-7-Pro-480x1040_nqdyei.png"><img src="https://res.cloudinary.com/df9wuyrbg/image/upload/v1749568159/Pixel-7-Pro-480x1040_nqdyei.png" width="200"/></a> |
 
 ---
 

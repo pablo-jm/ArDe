@@ -191,8 +191,112 @@
   color: #000000;
 }
 
+
+
 @media (max-width: 768px) {
   .catalogue-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .work-card {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 15px;
+  }
+  
+  .work-card img {
+    width: 100%;
+    max-width: 140px;
+    height: 160px;
+    border-radius: 15px;
+    margin-bottom: 8px;
+  }
+  
+  .work-card h4 {
+    font-size: 11px;
+    padding: 4px 8px;
+    margin: 12px 0 8px 0;
+    border-radius: 8px;
+  }
+  
+  .work-card:hover {
+    transform: scale(1.02);
+  }
+
+  .swal-popup-custom {
+    width: 95% !important;
+    max-width: 400px !important;
+    padding: 25px 15px !important;
+    border-radius: 20px !important;
+  }
+
+  .swal-container {
+    flex-direction: column !important;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .swal-image-container {
+    order: -1;
+    max-width: 180px;
+    padding: 12px;
+    border-radius: 15px;
+  }
+
+  .swal-image-container img {
+    border-radius: 6px;
+  }
+
+  .swal-info-container {
+    gap: 15px;
+    width: 100%;
+  }
+
+  .swal-title {
+    font-size: 12px;
+    padding: 5px 12px;
+    border-radius: 10px;
+  }
+
+  .swal-description {
+    width: 100%;
+    max-width: 260px;
+    padding: 15px;
+    font-size: 12px;
+    border-radius: 15px;
+    line-height: 1.3;
+  }
+
+  .swal-add-btn {
+    font-size: 12px;
+    padding: 5px 12px;
+    border-radius: 10px;
+  }
+  
+  .sweet-shipping-popup {
+    padding: 15px;
+    border-radius: 15px;
+  }
+
+  .sweet-shipping-title {
+    font-size: 15px;
+    margin-bottom: 15px;
+  }
+
+  .sweet-shipping-input {
+    width: 100%;
+    max-width: 260px;
+    padding: 8px;
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+  .sweet-shipping-button {
+    padding: 6px 14px;
+    font-size: 12px;
+    border-radius: 15px;
   }
 }

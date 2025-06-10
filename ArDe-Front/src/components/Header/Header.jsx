@@ -47,7 +47,7 @@ const Header = () => {
           const fullImageUrl = imageUrl.startsWith('http') ? imageUrl : `http://localhost:3000${imageUrl}`;
       
           return `
-          <div style="text-align: center; margin-bottom: 10px;">
+          <div style="text-align: center; margin-bottom: 10px;" class="order">
           <img src="${fullImageUrl}" alt="${order.work?.title}" style="max-width: 100px; height: auto; display: block; margin: 0 auto 8px;">
           <div>
             <strong>Obra:</strong> ${order.work?.title || 'Sin título'}<br>

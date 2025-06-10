@@ -164,22 +164,14 @@ body,
   }
 
   .home-description-section p {
-    font-size: 16px !important;
+    font-size: 12px !important;
   }
+
+  .home-logo {
+  max-height: 150px !important;
+  width: auto !important;
+  margin-bottom: 10px;
+}
 }
 
-@media (max-width: 400px) {
-  .h4-wrapper {
-    font-size: 14px !important;
-    margin-top: 30px !important;
-  }
 
-  .home-description-section {
-    height: 180px !important;
-    padding: 25px 10px !important;
-  }
-
-  .home-description-section p {
-    font-size: 14px !important;
-  }
-}

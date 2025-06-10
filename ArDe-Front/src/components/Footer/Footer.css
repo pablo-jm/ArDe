@@ -30,17 +30,17 @@
 
 @media (max-width: 600px) {
   .footer {
-    padding: 10px 20px;
-    font-size: 12px;
+    padding: 5px 20px;
+    font-size: 10px;
   }
 
   .footer-logo-img {
-    height: 40px;
+    max-height: 35px;
   }
 
   .social-icon {
-    width: 20px;
-    height: 20px;
+    max-width: 15px;
+    max-height: 15px;
     margin: 0 6px;
   }
 

@@ -37,3 +37,14 @@
   margin-bottom: 40px;
   white-space: pre-line;
 }
+
+
+@media (max-width: 600px) {
+  .events-content h2{
+    font-size: 15px !important;
+  }
+
+  .event-item{
+    font-size: 10px !important;
+  }
+}

@@ -57,6 +57,7 @@ const handleDeleteOrders = async (orderIds) => {
   }
 };
 
+
 export const handleCart = async () => {
   const token = localStorage.getItem('token');
   if (!token) {
@@ -95,14 +96,14 @@ export const handleCart = async () => {
       <label class="cart-item-label" style="display:flex; align-items:center; margin-bottom: 15px; cursor: pointer;">
         <input type="checkbox" class="cart-item-checkbox" data-order-id="${order.id}" style="margin-right: 10px; "/>
         <div style="display:flex; align-items:center; gap: 15px; width: 100%;">
-          <div style="width: 60px; height: 60px; border: 1px solid #000; border-radius: 10px; overflow: hidden; margin-left: 15px;">
+          <div class="cart-item-title" style="width: 60px; height: 60px; border: 1px solid #000; border-radius: 10px; overflow: hidden; margin-left: 15px;">
             <img src="${fullImageUrl}" alt="${order.work?.title || ''}" style="width: 100%; height: 100%; object-fit: cover;">
           </div>
           <div style="display: flex; flex-direction: column; gap: 2px; flex: 1;">
             <div style="font-weight: bold;">${order.work?.title || 'Sin título'}</div>
             <div style="font-size: 12px; color: #666;">${order.work?.dimensions || ''}</div>
           </div>
-          <div style="font-weight: bold;">${order.price}€</div>
+          <div class="cart-item-price" style="font-weight: bold;">${order.price}€</div>
         </div>
       </label>`;
     }).join('');
@@ -110,7 +111,7 @@ export const handleCart = async () => {
     await Swal.fire({
       title: 'Carrito',
       html: 
-        `<div style="max-height: 300px; overflow-y: auto; padding-right: 10px; margin-bottom: 20px;">
+        `<div id="item" style="max-height: 300px; overflow-y: auto; padding-right: 10px; margin-bottom: 20px;">
           ${orderItemsHtml}
         </div>
         <div class="cart-buttons">
@@ -127,20 +128,6 @@ export const handleCart = async () => {
       didOpen: () => {
         const buyBtn = Swal.getPopup().querySelector('#buy-btn');
         const deleteBtn = Swal.getPopup().querySelector('#delete-btn');
-
-        buyBtn.addEventListener('mouseenter', () => {
-          buyBtn.style.backgroundColor = '#d91c1c';
-        });
-        buyBtn.addEventListener('mouseleave', () => {
-          buyBtn.style.backgroundColor = '#000000';
-        });
-
-        deleteBtn.addEventListener('mouseenter', () => {
-          deleteBtn.style.backgroundColor = '#d91c1c';
-        });
-        deleteBtn.addEventListener('mouseleave', () => {
-          deleteBtn.style.backgroundColor = '#000000';
-        });
 
         buyBtn.addEventListener('click', () => {
           const selectedIds = Array.from(Swal.getPopup().querySelectorAll('.cart-item-checkbox:checked'))
