@@ -178,8 +178,8 @@ This project utilizes the following technologies:
 ### Backend
 - **Node.js**: JavaScript runtime environment
 - **Express.js**: Web application framework for Node.js
-- **MongoDB**: NoSQL database for data storage
-- **Mongoose**: ODM for MongoDB and Node.js
+- **MySQL**: Relational database for data storage
+- **Sequelize**: ORM for MySQL and Node.js
 - **JWT (JSON Web Tokens)**: For authentication and authorization
 - **bcrypt**: Password hashing library
 - **Jest**: JavaScript testing framework
