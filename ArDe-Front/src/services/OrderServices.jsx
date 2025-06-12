@@ -115,8 +115,8 @@ export const handleCart = async () => {
           ${orderItemsHtml}
         </div>
         <div class="cart-buttons">
-          <button id="buy-btn" class="sweet-cart-button">Comprar</button>
-          <button id="delete-btn" class="sweet-cart-button">Eliminar</button>
+          <button id="buy-btn" class="sweet-cart-button" role="button">Comprar</button>
+          <button id="delete-btn" class="sweet-cart-button" role="button">Eliminar</button>
         </div>`,
       showConfirmButton: false,
       showCancelButton: false,

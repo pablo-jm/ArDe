@@ -195,8 +195,8 @@ const Header = () => {
           <input type="email" id="profile-email" class="sweet-input" placeholder="Email" value="${user.email}" style="width: 80%; padding: 6px; margin-bottom: 8px;" disabled>
           <input type="password" id="new-password" class="sweet-input" placeholder="Nueva contraseña" style="width: 80%; padding: 6px; margin-bottom: 8px;">
         </form>
-        <button type="button" id="logout-button" class="logout-button">Cerrar sesión</button>
-        <button type="button" id="orders-button" class="orders-button">Mis pedidos</button>
+        <button type="button" id="logout-button" class="logout-button" role="button">Cerrar sesión</button>
+        <button type="button" id="orders-button" class="orders-button" role="button">Mis pedidos</button>
         <div style="margin-top: 15px;">
           <a href="#" id="delete-link" style="color: #1a73e8; text-decoration: none; font-size: 12px;">Puedes eliminar tu cuenta aquí</a>
         </div>

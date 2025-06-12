@@ -263,7 +263,7 @@ export const handleWorkPreview = async (work) => {
         <div class="swal-info-container">
           <div class="swal-title">${work.title}</div>
           <div class="swal-description">${work.description || ''}</div>
-          <button id="btn-add" class="swal-add-btn">Añadir</button>
+          <button id="btn-add" role="button" class="swal-add-btn">Añadir</button>
         </div>
       </div>
     `,

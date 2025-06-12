@@ -14,9 +14,9 @@ const Dashboard = () => {
         <main className="dashboard-content-wrapper">
           <div className="dashboard-admin-panel">
             <nav>Panel de administración</nav>
-            <button className="card-button" alt="Añadir obra" onClick={showCreateWorkModal}>Añadir obra</button>
-            <button className="card-button" alt="Editar obra" onClick={showUpdateWorkModal}>Editar obra</button>
-            <button className="card-button" alt="Editar eventos" onClick={showUpdateEventModal}>Editar eventos</button>
+            <button className="card-button" alt="Añadir obra" role="button" onClick={showCreateWorkModal}>Añadir obra</button>
+            <button className="card-button" alt="Editar obra" role="button" onClick={showUpdateWorkModal}>Editar obra</button>
+            <button className="card-button" alt="Editar eventos" role="button" onClick={showUpdateEventModal}>Editar eventos</button>
           </div>
         </main>
     </div>
