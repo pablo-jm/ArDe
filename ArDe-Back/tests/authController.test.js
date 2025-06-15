@@ -58,6 +58,7 @@ describe('Register', () => {
   });
 });
 
+
 describe('Login', () => {
   it('Login user if email and password are valid', async () => {
     const req = mockRequest({

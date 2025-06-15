@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for models/UserModel.js</title>
+    <title>Code coverage report for models/WorkModel.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">models</a> UserModel.js</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">models</a> WorkModel.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -106,10 +106,32 @@
 <a name='L41'></a><a href='#L41'>41</a>
 <a name='L42'></a><a href='#L42'>42</a>
 <a name='L43'></a><a href='#L43'>43</a>
-<a name='L44'></a><a href='#L44'>44</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -152,47 +174,58 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { DataTypes } from 'sequelize';
 import sequelize from '../database/db.js';
 &nbsp;
-const UserModel = sequelize.define('User', {
+const WorkModel = sequelize.define('Work', {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
     primaryKey: true
   },
-  full_name: {
-    type: DataTypes.STRING(100),
+  title: {
+    type: DataTypes.STRING(150),
     allowNull: false,
     validate: {
       len: [3, 100]
     }
   },
-  email: {
-    type: DataTypes.STRING(100),
-    allowNull: false,
-    unique: true,
-    validate: {
-      isEmail: true
+  description: {
+    type: DataTypes.TEXT,
+      allowNull: false,
+      validate: {
+      len: [10, 150]
     }
   },
-  password: {
-    type: DataTypes.STRING(60),
+  image_url: {
+    type: DataTypes.STRING(255),
     allowNull: false,
     validate: {
-      len: [8, 100]
+      isUrl: true
     }
   },
-  register_date: {
+  price: {
+    type: DataTypes.DECIMAL(10, 2),
+    allowNull: false,
+    validate: {
+      min: 1
+    }
+  },
+  create_date: {
     type: DataTypes.DATEONLY,
     allowNull: false,
     defaultValue: DataTypes.NOW
   },
-  role: {
-    type: DataTypes.ENUM('admin', 'user'),
+  dimensions: {
+    type: DataTypes.STRING(100),
+    allowNull: false
+  },
+  state: {
+    type: DataTypes.ENUM('selling', 'sold'),
     allowNull: false,
-    defaultValue: 'user'
+    defaultValue: 'selling'
   }
 });
 &nbsp;
-export default UserModel;</pre></td></tr></table></pre>
+export default WorkModel;
+&nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
