@@ -300,7 +300,7 @@ const Header = () => {
             {user && location.pathname === '/shop' ?  (
               <div className="shop-cart">
                 <span onClick={handleCart} className="cart-icon-wrapper">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="white">
+                  <svg className="cart-icon" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="white">
                     <path d="M6 7V6a6 6 0 1 1 12 0v1h3a1 1 0 0 1 .99 1.14l-1.5 
                             13A2 2 0 0 1 18.5 23h-13a2 2 0 0 1-1.99-1.86l-1.5-13A1 1 0 
                             0 1 4 7h2zm2 0h8V6a4 4 0 0 0-8 0v1z"/>

@@ -1,6 +1,6 @@
 import Swal from 'sweetalert2';
 
-const validateEventData = ({ title, description, event_time, event_date, place }) => {
+export const validateEventData = ({ title, description, event_time, event_date, place }) => {
 
     if (!title || title.length < 3 || title.length > 100) {
       return 'El título debe tener entre 3 y 100 caracteres.';
