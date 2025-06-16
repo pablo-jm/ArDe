@@ -1,9 +1,9 @@
 ![logo](https://res.cloudinary.com/df9wuyrbg/image/upload/v1747153355/Logo_ARDE_black_mzmcpa.svg)
 # **ArDe: Arte y Decoración** 🖼️
 
-**ArDe** is a project focused on redefining the concept of independent online commerce tailored to the art world. It implements the best visual methods to attract new audiences, distribute artist information, and reach a wider audience. In addition, it includes its own online store, from which to manage the purchase and sale of works, as well as order and shipping management. **ArDe** focuses on ensuring self-management for independent or emerging artists.
+**ArDe** is a project focused on redefining the concept of independent online commerce tailored to the art world. It implements the best visual methods to attract new audiences, distribute artist information, and reach a wider audience. In addition, it includes its own online store, from which to manage the purchase and sale of works, as well as order and shipping management. **ArDe** focuses on ensuring self-management for independent or emerging artists.<br><br>
 
----
+
 
 ## 📌 **Table of Contents**
 1. [⚙️ Installation and Requirements](#installation-and-requirements)
@@ -12,7 +12,7 @@
 4. [💻 Technologies Used](#technologies-used)
 5. [📚 Libraries](#libraries)
 6. [🧪 Test Screenshots](#test-screenshots)
-7. [🚀 Next Steps](#next-steps)
+7. [🚀 Next Steps](#next-steps)<br><br>
 
 
 ## ⚙️ Installation and Requirements
@@ -54,9 +54,11 @@ Before you start, ensure you have the following installed:
    cd ArDe-back
    node app.js
 
----
+<br>
 
 ## 🎨 **App Design**
+
+<br>
 
 ### 🖥️ Desktop Version  
 
@@ -64,6 +66,7 @@ Before you start, ensure you have the following installed:
 |-----------|----------------|------------------------|----------------|----------------|
 | [![Home Page](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749139648/Home_Page_il4ytx.png)](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749139648/Home_Page_il4ytx.png) | [![Shop Page](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749139648/Shop_Page_pl9u7y.png)](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749139648/Shop_Page_pl9u7y.png) | [![Shop Preview](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749139790/Shop_preview_sizkld.png)](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749139790/Shop_preview_sizkld.png) | [![Shopping Cart](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749314492/Shopping_Cart_xt5qgv.png)](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749314492/Shopping_Cart_xt5qgv.png) | [![Orders section](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749570629/My_orders_n8uela.png)](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749570629/My_orders_n8uela.png) |
 
+<br>
 
 ### 🖥️ Mobile Version  
 
@@ -71,9 +74,9 @@ Before you start, ensure you have the following installed:
 |-----------|-----------|--------------|----------------|----------------|
 | <a href="https://res.cloudinary.com/df9wuyrbg/image/upload/v1749142154/Home_Page_Mobile_x6pid1.png"><img src="https://res.cloudinary.com/df9wuyrbg/image/upload/v1749142154/Home_Page_Mobile_x6pid1.png" width="200"/></a> | <a href="https://res.cloudinary.com/df9wuyrbg/image/upload/v1749570533/Shop_Page_Mobile_gvwwqv.png"><img src="https://res.cloudinary.com/df9wuyrbg/image/upload/v1749570533/Shop_Page_Mobile_gvwwqv.png" width="200"/></a> | <a href="https://res.cloudinary.com/df9wuyrbg/image/upload/v1749570533/Shop_Preview_Mobile_pstv7e.png"><img src="https://res.cloudinary.com/df9wuyrbg/image/upload/v1749570533/Shop_Preview_Mobile_pstv7e.png" width="200"/></a> | <a href="https://res.cloudinary.com/df9wuyrbg/image/upload/v1749573532/Shopping_Cart_Mobile_i2wohe.png"><img src="https://res.cloudinary.com/df9wuyrbg/image/upload/v1749573532/Shopping_Cart_Mobile_i2wohe.png" width="200"/></a> | <a href="https://res.cloudinary.com/df9wuyrbg/image/upload/v1749568159/Pixel-7-Pro-480x1040_nqdyei.png"><img src="https://res.cloudinary.com/df9wuyrbg/image/upload/v1749568159/Pixel-7-Pro-480x1040_nqdyei.png" width="200"/></a> |
 
----
 
-## 🏗️ **Project Architecture**
+
+## 🏗️ **Project Architecture**<br>
 
 
 ### **Backend Structure**
@@ -102,7 +105,7 @@ Before you start, ensure you have the following installed:
       ├── 📄 package-lock.json
       └── 📄 package.json
 
-
+<br>
 
 ### **Frontend Structure**
 
@@ -118,7 +121,9 @@ Before you start, ensure you have the following installed:
       │   ├── 📂 components
       │   │   ├── 📂 AuthButton
       │   │   │   ├── 📄 AuthButton.jsx
-      │   │   │   └── 📄 AuthButton.css
+      │   │   │   ├── 📄 AuthButton.css
+      │   │   │   └── 📄 AuthButton.test.js
+      │   │   │   
       │   │   ├── 📂 CatalogueSelection 
       │   │   ├── 📂 ContactSection
       │   │   ├── 📂 EventsSection
@@ -128,14 +133,20 @@ Before you start, ensure you have the following installed:
       │   ├── 📂 pages
       │   │   ├── 📂 Admin
       │   │   │   ├── 📄 Dashboard.jsx
-      │   │   │   └── 📄 Dashboard.css
+      │   │   │   ├── 📄 Dashboard.css
+      │   │   │   └── 📄 Dashboard.test.js
+      │   │   │   
       │   │   ├── 📂 Home
       │   │   └── 📂 Shop
       │   │       
       │   ├── 📂 router
-      │   │   └── 📄 Router.jsx
+      │   │   ├── 📄 Router.jsx
+      │   │   └── 📄 Router.test.js
       │   │
       │   ├── 📂 services
+      │   │   ├── 📄 WorkServices.jsx
+      │   │   └── 📄 WorkServices.test.js
+      │   │
       │   ├── 📄 App.css
       │   ├── 📄 App.jsx
       │   ├── 📄 index.css
@@ -148,7 +159,7 @@ Before you start, ensure you have the following installed:
       ├── 📄 package.json
       └── 📄 vite.config.js
 
----
+
 
 ## 📚 **Libraries**
 
@@ -160,7 +171,7 @@ Before you start, ensure you have the following installed:
 - react-router-dom
 - sweetalert2
 
----
+<br>
 
 ## 💻 **Technologies Used**
 
@@ -186,13 +197,15 @@ This project utilizes the following technologies:
 - **Babel**: JavaScript compiler for ES6+ features
 - **Nodemon**: Development server auto-restart
 
----
+<br>
 
 ## 🧪 **Test Screenshots**
 
-**Front Test**
+**Front Test**  
 
-| Test Name         | Screenshot |
+<br>
+
+| Test Name        | Screenshot |
 |------------------|------------|
 | **Header Test**  | ![Header Test](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749138084/Captura_de_pantalla_2025-05-25_172759_wbm7c2.png) |
 | **Auth Button Test (Also header)** | ![Auth Button Test](https://res.cloudinary.com/df9wuyrbg/image/upload/v1750092127/AuthButton_geuwtu.png) |
@@ -200,9 +213,11 @@ This project utilizes the following technologies:
 | **Catalogue Test** | ![Catalogue Test](https://res.cloudinary.com/df9wuyrbg/image/upload/v1750092127/CatalogueSection_n9byrc.png) |
 | **Events Test**    | ![Events Test](https://res.cloudinary.com/df9wuyrbg/image/upload/v1750092126/EventsSection_wse7pc.png) |
 
-
+<br>
 
 **Back Test**
+
+<br>
 
 | Test Name         | Screenshot |
 |------------------|------------|
@@ -212,6 +227,19 @@ This project utilizes the following technologies:
 | **Order Controller Test** | ![Order Controller Test](https://res.cloudinary.com/df9wuyrbg/image/upload/v1750092615/OrderController_lw02h2.png)|
 
 
+<br>
+
+<h2><img src="https://cdn-icons-png.freepik.com/512/15879/15879294.png?ga=GA1.1.1582098037.1748944011" alt="icon" style="width: 30px; vertical-align: middle;" /> <strong>Testing Coverage</strong></h2>
+
+
+<br>
+
+| Test Type         | Screenshot |
+|------------------|------------|
+| **Front Coverage**  | ![Front Coverage](https://res.cloudinary.com/df9wuyrbg/image/upload/v1750095028/Front_coverage_akty2m.png) |
+| **Back Coverage** | ![Back Coverage](https://res.cloudinary.com/df9wuyrbg/image/upload/v1750095028/Back_coverage_hcqg1g.png)|
+
+<br>
 
 ## 🚀 **Next Steps**
 
