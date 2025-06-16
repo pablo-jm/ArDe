@@ -195,10 +195,10 @@ This project utilizes the following technologies:
 | Test Name         | Screenshot |
 |------------------|------------|
 | **Header Test**  | ![Header Test](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749138084/Captura_de_pantalla_2025-05-25_172759_wbm7c2.png) |
-| **Auth Button Test (Also header)** | ![Auth Button Test](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749138135/Captura_de_pantalla_2025-05-26_180918_lbki9j.png) |
-| **Footer Test**  | ![Footer Test]() |
-| **Catalogue Test** | ![Catalogue Test]() |
-| **Events Test**    | ![Events Test]() |
+| **Auth Button Test (Also header)** | ![Auth Button Test](https://res.cloudinary.com/df9wuyrbg/image/upload/v1750092127/AuthButton_geuwtu.png) |
+| **Footer Test**  | ![Footer Test](https://res.cloudinary.com/df9wuyrbg/image/upload/v1750092126/Footer_w0zqgx.png) |
+| **Catalogue Test** | ![Catalogue Test](https://res.cloudinary.com/df9wuyrbg/image/upload/v1750092127/CatalogueSection_n9byrc.png) |
+| **Events Test**    | ![Events Test](https://res.cloudinary.com/df9wuyrbg/image/upload/v1750092126/EventsSection_wse7pc.png) |
 
 
 
@@ -206,7 +206,11 @@ This project utilizes the following technologies:
 
 | Test Name         | Screenshot |
 |------------------|------------|
-| **Auth and User Controllers Test**  | ![Auth Controller Test and User Controller Test](https://res.cloudinary.com/df9wuyrbg/image/upload/v1749138018/Captura_de_pantalla_2025-05-26_180744_lgcciz.png) |
+| **Auth Controller Test**  | ![Auth Controller Test](https://res.cloudinary.com/df9wuyrbg/image/upload/v1750092615/AuthController_o95zlc.png) | 
+| **User Controller Test** | ![User Controller Test](https://res.cloudinary.com/df9wuyrbg/image/upload/v1750092614/UserController_jklnnk.png)|
+| **Work Controller Test** | ![Work Controller Test](https://res.cloudinary.com/df9wuyrbg/image/upload/v1750092615/WorkController_eyiqde.png)|
+| **Order Controller Test** | ![Order Controller Test](https://res.cloudinary.com/df9wuyrbg/image/upload/v1750092615/OrderController_lw02h2.png)|
+
 
 
 ## 🚀 **Next Steps**

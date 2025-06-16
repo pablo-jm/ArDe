@@ -116,9 +116,9 @@ describe('Auth logic', () => {
     Swal.showValidationMessage = vi.fn();
   });
 
-  it('Muestra mensaje si email o contraseña están vacíos', async () => {
+  it('Displays message if email or password are empty', async () => {
     Swal.getPopup.mockReturnValue({
-      querySelector: vi.fn(() => ({ value: '' })) // ambos vacíos
+      querySelector: vi.fn(() => ({ value: '' }))
     });
 
     render(
@@ -137,7 +137,7 @@ describe('Auth logic', () => {
     );
   });
 
-  it('Redirige a admin/dashboard si el usuario es admin', async () => {
+  it('Redirect to admin/dashboard if user is admin', async () => {
     Swal.getPopup.mockReturnValue({
       querySelector: vi.fn((selector) => {
         if (selector === '#email') return { value: 'admin@example.com' };
@@ -181,7 +181,7 @@ describe('Auth logic', () => {
     );
   });
 
-  it('Muestra error del servidor si login falla', async () => {
+  it('Show error if login failure', async () => {
       Swal.getPopup.mockReturnValue({
         querySelector: vi.fn((selector) => {
           if (selector === '#email') return { value: 'user@example.com' };
@@ -211,7 +211,7 @@ describe('Auth logic', () => {
     );
   });
 
-  it('Muestra error de red si fetch lanza excepción', async () => {
+  it('Displays net error if fetch throw exception', async () => {
     Swal.getPopup.mockReturnValue({
       querySelector: vi.fn((selector) => {
         if (selector === '#email') return { value: 'user@example.com' };
