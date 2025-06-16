@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/17</span>
+                <span class='fraction'>17/17</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/17</span>
+                <span class='fraction'>17/17</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -88,64 +88,64 @@
 <a name='L23'></a><a href='#L23'>23</a>
 <a name='L24'></a><a href='#L24'>24</a>
 <a name='L25'></a><a href='#L25'>25</a>
-<a name='L26'></a><a href='#L26'>26</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<a name='L26'></a><a href='#L26'>26</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import Header from '../../components/Header/Header';<span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ></span></span></span>
-<span class="cstat-no" title="statement not covered" >import { showCreateWorkModal, showUpdateWorkModal } from '../../services/WorkServices';</span>
-<span class="cstat-no" title="statement not covered" >import { showUpdateEventModal } from '../../services/EventServices';</span>
-<span class="cstat-no" title="statement not covered" >import './Dashboard.css'</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">import Header from '../../components/Header/Header';
+import { showCreateWorkModal, showUpdateWorkModal } from '../../services/WorkServices';
+import { showUpdateEventModal } from '../../services/EventServices';
+import './Dashboard.css'
 &nbsp;
-<span class="cstat-no" title="statement not covered" >const Dashboard = () =&gt; {</span>
+const Dashboard = () =&gt; {
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return (</span>
-<span class="cstat-no" title="statement not covered" >    &lt;div className="dashboard-father-container"&gt;</span>
-<span class="cstat-no" title="statement not covered" >      &lt;Header /&gt;</span>
+  return (
+    &lt;div className="dashboard-father-container"&gt;
+      &lt;Header /&gt;
       
-<span class="cstat-no" title="statement not covered" >      &lt;div className="dashboard-background-overlay" /&gt;</span>
+      &lt;div className="dashboard-background-overlay" /&gt;
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        &lt;main className="dashboard-content-wrapper"&gt;</span>
-<span class="cstat-no" title="statement not covered" >          &lt;div className="dashboard-admin-panel"&gt;</span>
-<span class="cstat-no" title="statement not covered" >            &lt;nav&gt;Panel de administración&lt;/nav&gt;</span>
-<span class="cstat-no" title="statement not covered" >            &lt;button className="card-button" alt="Añadir obra" role="button" onClick={showCreateWorkModal}&gt;Añadir obra&lt;/button&gt;</span>
-<span class="cstat-no" title="statement not covered" >            &lt;button className="card-button" alt="Editar obra" role="button" onClick={showUpdateWorkModal}&gt;Editar obra&lt;/button&gt;</span>
-<span class="cstat-no" title="statement not covered" >            &lt;button className="card-button" alt="Editar eventos" role="button" onClick={showUpdateEventModal}&gt;Editar eventos&lt;/button&gt;</span>
+        &lt;main className="dashboard-content-wrapper"&gt;
+          &lt;div className="dashboard-admin-panel"&gt;
+            &lt;nav&gt;Panel de administración&lt;/nav&gt;
+            &lt;button className="card-button" alt="Añadir obra" role="button" onClick={showCreateWorkModal}&gt;Añadir obra&lt;/button&gt;
+            &lt;button className="card-button" alt="Editar obra" role="button" onClick={showUpdateWorkModal}&gt;Editar obra&lt;/button&gt;
+            &lt;button className="card-button" alt="Editar eventos" role="button" onClick={showUpdateEventModal}&gt;Editar eventos&lt;/button&gt;
           &lt;/div&gt;
         &lt;/main&gt;
     &lt;/div&gt;
   );
-<span class="cstat-no" title="statement not covered" >};</span>
+};
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export default Dashboard;</span></pre></td></tr></table></pre>
+export default Dashboard;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-06-15T17:05:27.608Z
+                at 2025-06-16T09:46:45.769Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
