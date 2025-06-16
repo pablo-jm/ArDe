@@ -1,6 +1,6 @@
 import Swal from 'sweetalert2'; 
 
-const handleBuyOrders = async (orderIds) => {
+export const handleBuyOrders = async (orderIds) => {
   const token = localStorage.getItem('token');
   if (!token) {
     return Swal.fire('Error', 'Debes iniciar sesión para continuar.', 'error');
@@ -30,7 +30,7 @@ const handleBuyOrders = async (orderIds) => {
 };
 
 
-const handleDeleteOrders = async (orderIds) => {
+export const handleDeleteOrders = async (orderIds) => {
   const token = localStorage.getItem('token');
   if (!token) {
     return Swal.fire('Error', 'Debes iniciar sesión para continuar.', 'error');

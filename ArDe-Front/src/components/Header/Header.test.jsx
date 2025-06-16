@@ -160,7 +160,7 @@ describe("Header", () => {
   });
 
 
-  it("handleMyOrders calls Swal.fire with orders", async () => {
+  it("HandleMyOrders calls Swal.fire with orders", async () => {
     localStorage.setItem('token', 'fake-token');
     localStorage.setItem('user', JSON.stringify({ fullName: 'Juan' }));
 
@@ -207,7 +207,7 @@ describe("Header", () => {
   });
 
 
-  it("handleMyOrders shows error Swal on fetch failure", async () => {
+  it("HandleMyOrders shows error Swal on fetch failure", async () => {
     localStorage.setItem('token', 'fake-token');
     localStorage.setItem('user', JSON.stringify({ fullName: 'Juan' }));
 
@@ -234,4 +234,15 @@ describe("Header", () => {
       localStorage.clear();
     }
   });
+
+
+  it("Renders correctly with no user and no token in localStorage", () => {
+  render(<Header />, { wrapper: Wrapper });
+
+  expect(screen.getByText('Tienda')).toBeInTheDocument();
+  expect(screen.getByRole('button', { name: /Iniciar sesión/i })).toBeInTheDocument();
 });
+
+});
+
+
