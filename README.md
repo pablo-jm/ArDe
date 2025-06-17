@@ -1,5 +1,5 @@
 ![logo](https://res.cloudinary.com/df9wuyrbg/image/upload/v1747153355/Logo_ARDE_black_mzmcpa.svg)
-# **ArDe: Arte y Decoración** 🖼️
+# **ArDe: Art & Decoration** 🖼️
 
 **ArDe** is a project focused on redefining the concept of independent online commerce tailored to the art world. It implements the best visual methods to attract new audiences, distribute artist information, and reach a wider audience. In addition, it includes its own online store, from which to manage the purchase and sale of works, as well as order and shipping management. **ArDe** focuses on ensuring self-management for independent or emerging artists.<br><br>
 
