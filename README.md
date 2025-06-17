@@ -243,4 +243,10 @@ This project utilizes the following technologies:
 
 ## 🚀 **Next Steps**
 
-- 
+- Code Optimization and Encapsulation
+- Increase security
+- Implement Payment Gateway
+- Email verification
+- Option to restock sold works
+- Work preview sliders
+- Option to select all works (shopping cart)
