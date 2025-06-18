@@ -85,19 +85,24 @@ describe('createOrder', () => {
 
 
 describe('updateOrder', () => {
-  it('Should update order by id', async () => {
-    const body = { ship_address: 'Nueva Dirección' };
+  it('should update order when valid fields are provided', async () => {
+    const body = { ship_address: 'Nueva Dirección', phone_number: '123456789' };
     const params = { id: 1 };
     const { req, res } = mockReqRes(body, params);
 
-    OrderModel.update.mockResolvedValue([1]);
+    OrderModel.update = jest.fn().mockResolvedValue([1]);
 
     await updateOrder(req, res);
 
-    expect(OrderModel.update).toHaveBeenCalledWith(body, { where: { id: 1 } });
-    expect(res.json).toHaveBeenCalledWith({ message: 'Order updated successfully!' });
+    expect(OrderModel.update).toHaveBeenCalledWith(
+      { ship_address: 'Nueva Dirección', phone_number: '123456789' },
+      { where: { id: 1 } }
+    );
+
+    expect(res.json).toHaveBeenCalledWith({ message: 'Order updated successfully' });
   });
 });
+
 
 
 describe('deleteOrder', () => {
