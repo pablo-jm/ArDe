@@ -1,4 +1,4 @@
-import { getOrdersByLoggedUser, getUnpaidOrdersByLoggedUser, createOrder, updateOrder, deleteOrder } from '../controllers/orderController.js';
+import { getOrdersByLoggedUser, getUnpaidOrdersByLoggedUser, createOrder, updateOrder, deleteOrder } from '../controllers/OrderController.js';
 import OrderModel from '../models/OrderModel.js';
 import WorkModel from '../models/WorkModel.js';
 
