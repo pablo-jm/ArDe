@@ -320,7 +320,7 @@ const Header = () => {
           <li>
             {user ? (
               <div className="user-session">
-                <span className="user-name" onClick={showProfileModal}><i className="bi bi-person"></i>{user.fullName}</span>
+                <span className="user-name" onClick={showProfileModal}>{user.fullName}</span>
               </div>
             ) : (
               <AuthButton />
