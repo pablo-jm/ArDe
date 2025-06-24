@@ -99,7 +99,7 @@ describe('updateOrder', () => {
       { where: { id: 1 } }
     );
 
-    expect(res.json).toHaveBeenCalledWith({ message: 'Order updated successfully' });
+    expect(res.json).toHaveBeenCalledWith({ message: 'Order updated successfully!' });
   });
 });
 
